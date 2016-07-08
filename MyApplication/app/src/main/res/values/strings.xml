@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="my_custom_text">Hi there!</string>
+    <string name="button_text">Click me!</string>
+</resources>

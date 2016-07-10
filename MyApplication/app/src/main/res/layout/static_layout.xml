@@ -21,11 +21,16 @@
             android:background="@color/colorWhite"
             android:layout_weight="1" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <ImageButton
+            android:layout_width="@dimen/action_button_size"
+            android:layout_height="@dimen/action_button_size"
             android:gravity="top"
             android:layout_gravity="right"
+            android:layout_weight="@dimen/action_button_size"
+            android:height="@dimen/action_button_size"
+            android:background="@color/colorTransparent"
+            android:src="@drawable/play-icon"
+            android:padding="@dimen/action_button_padding"
             android:layout_marginTop="-25dp" />
 
         <TextView

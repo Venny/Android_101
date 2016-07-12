@@ -19,19 +19,20 @@
             android:layout_height="0dp"
             android:id="@+id/imageView"
             android:background="@color/colorWhite"
-            android:layout_weight="1" />
+            android:scaleType="centerCrop"
+            android:src="@drawable/android_wallpaper_by_hana"
+            android:layout_weight="1"
+            />
 
         <ImageButton
-            android:layout_width="@dimen/action_button_size"
-            android:layout_height="@dimen/action_button_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:gravity="top"
-            android:layout_gravity="right"
-            android:layout_weight="@dimen/action_button_size"
-            android:height="@dimen/action_button_size"
+            android:layout_gravity="end"
             android:background="@color/colorTransparent"
-            android:src="@drawable/play-icon"
+            android:src="@drawable/ic_play_arrow_black_24dp"
             android:padding="@dimen/action_button_padding"
-            android:layout_marginTop="-25dp" />
+            android:layout_marginTop="-29dp"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -52,7 +53,7 @@
 
         <Button
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:text="Like"
             android:id="@+id/button1"
             android:padding="@dimen/activity_vertical_margin"
@@ -62,7 +63,7 @@
             android:layout_weight="1" />
         <Button
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:text="Select Quality"
             android:padding="@dimen/activity_vertical_margin"
             android:background="@color/colorWhite"
@@ -71,7 +72,7 @@
             android:layout_weight="1" />
         <Button
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:text="Watch trayler"
             android:id="@+id/button3"
             android:background="@color/colorWhite"

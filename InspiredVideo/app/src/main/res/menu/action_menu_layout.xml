@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item android:id="@+id/item1"
+
+    <item android:id="@+id/toggle_button"
         android:title="@android:string/selectTextMode"
         android:icon="@drawable/ic_subject_black_24dp"
-        app:showAsAction="always" />
+        app:showAsAction="ifRoom" />
 
     <!-- Settings, should always be in the overflow -->
     <item android:id="@+id/action_settings"
         android:title="@string/action_settings"
-        app:showAsAction="always"/>
+        android:icon="@drawable/ic_more_vert_black_24dp"
+        app:showAsAction="ifRoom"/>
 </menu>

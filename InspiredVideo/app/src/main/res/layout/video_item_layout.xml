@@ -20,12 +20,14 @@
         android:id="@+id/nameTextView"
         android:layout_weight="0.5"
         android:padding="@dimen/default_view_padding"
+        android:textColor="@color/colorPrimaryDark"
         android:paddingBottom="0dp"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:id="@+id/descTextView"
+        android:textColor="@color/colorPrimaryDark"
         android:layout_weight="0.5"
         android:padding="@dimen/default_view_padding" />
 </LinearLayout>

@@ -9,6 +9,9 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import com.example.inspired.inspiredvideo.app.VideoAdapter;
+import com.example.inspired.inspiredvideo.utils.VideoItem;
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {

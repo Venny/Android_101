@@ -1,4 +1,4 @@
-package com.example.inspired.inspiredvideo;
+package com.example.inspired.inspiredvideo.utils;
 
 import android.widget.ImageView;
 

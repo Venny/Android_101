@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="toolbar_spinner_items_array">
+        <item>All</item>
+        <item>Comedy</item>
+        <item>Action</item>
+        <item>Drama</item>
+    </string-array>
+</resources>

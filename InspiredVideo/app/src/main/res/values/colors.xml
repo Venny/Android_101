@@ -7,5 +7,6 @@
     <color name="colorGreen">#39de41</color>
     <color name="colorYellow">#fff152</color>
     <color name="colorLightYellow">#faf5af</color>
-    <color name="colorpureWhite">#ffffff</color>
+    <color name="colorPureWhite">#ffffff</color>
+    <color name="colorTransparent">#00000000</color>
 </resources>

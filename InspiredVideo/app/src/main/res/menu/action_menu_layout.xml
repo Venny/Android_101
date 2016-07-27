@@ -2,14 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <item android:id="@+id/spinner"
+        android:title="@string/spinner"
+        app:actionViewClass="android.widget.Spinner"
+        android:color="@color/colorPureWhite"
+
+        app:showAsAction="ifRoom"/>
+
     <item android:id="@+id/toggle_button"
         android:title="@android:string/selectTextMode"
         android:icon="@drawable/ic_subject_black_24dp"
         app:showAsAction="ifRoom" />
 
     <!-- Settings, should always be in the overflow -->
-    <item android:id="@+id/action_settings"
-        android:title="@string/action_settings"
-        android:icon="@drawable/ic_more_vert_black_24dp"
-        app:showAsAction="ifRoom"/>
 </menu>

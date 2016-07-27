@@ -1,5 +1,6 @@
 package com.example.inspired.inspiredvideo;
 
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -8,6 +9,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import com.example.inspired.inspiredvideo.app.VideoAdapter;
 import com.example.inspired.inspiredvideo.utils.VideoItem;
@@ -53,7 +56,11 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.action_menu_layout, menu);
+
         MenuItem toggleBtn = menu.findItem(R.id.toggle_button);
+        MenuItem spinnerBtn = menu.findItem(R.id.spinner);
+        Spinner spinner = (Spinner) MenuItemCompat.getActionView(spinnerBtn);
+        System.out.println(spinner);
 
         // Add an event to the Toggle button.
         toggleBtn.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
@@ -69,6 +76,12 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             };
         });
+
+        // Add a dropdown menu to the Spinner.
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.toolbar_spinner_items_array, R.layout.toolbar_spinner_item);
+        adapter.setDropDownViewResource(R.layout.toolbar_spinner_item);
+
+        spinner.setAdapter(adapter);
         return true;
     }
 }

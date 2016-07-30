@@ -1,15 +1,13 @@
 package com.example.inspired.inspiredvideo.app;
 
-import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.inspired.inspiredvideo.R;
-import com.example.inspired.inspiredvideo.activities.MainActivity;
 import com.example.inspired.inspiredvideo.utils.VideoItem;
+import com.example.inspired.inspiredvideo.utils.VideoViewHolder;
 
 import java.util.ArrayList;
 
@@ -29,8 +27,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoViewHolder>{
     @Override
     public VideoViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View vHolder = LayoutInflater.from(parent.getContext()).inflate(R.layout.movie_item, parent, false);
-        VideoViewHolder videoViewHolder = new VideoViewHolder(vHolder);
-        return videoViewHolder;
+        return new VideoViewHolder(vHolder);
     }
 
     @Override
@@ -52,5 +49,9 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoViewHolder>{
     @Override
     public int getItemCount() {
         return mVideoItems.size();
+    }
+
+    public void setmVideoItems(ArrayList<VideoItem> mVideoItems) {
+        this.mVideoItems = mVideoItems;
     }
 }

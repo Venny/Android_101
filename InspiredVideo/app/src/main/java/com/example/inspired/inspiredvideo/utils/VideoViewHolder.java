@@ -1,4 +1,4 @@
-package com.example.inspired.inspiredvideo.app;
+package com.example.inspired.inspiredvideo.utils;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;

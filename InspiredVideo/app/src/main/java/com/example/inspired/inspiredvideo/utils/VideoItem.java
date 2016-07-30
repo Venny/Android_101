@@ -10,13 +10,14 @@ public class VideoItem implements Serializable {
     private int position;
     private String description;
     private int imageRes;
+    private int movieGenreId;
 
-    public VideoItem(String name, String description, int imageRes, int position) {
+    public VideoItem(String name, String description, int imageRes, int position, int movieGenreId) {
         this.name = name;
         this.description = description;
         this.imageRes = imageRes;
         this.position = position;
-        //System.out.println("ID: " + videoItemId);
+        this.movieGenreId = movieGenreId;
     }
 
     public String getName() {
@@ -33,5 +34,9 @@ public class VideoItem implements Serializable {
 
     public int getPosition() {
         return position;
+    }
+
+    public int getMovieGenreId() {
+        return movieGenreId;
     }
 }

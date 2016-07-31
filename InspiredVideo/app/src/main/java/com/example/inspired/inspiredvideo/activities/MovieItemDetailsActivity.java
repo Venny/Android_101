@@ -2,7 +2,11 @@ package com.example.inspired.inspiredvideo.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.example.inspired.inspiredvideo.R;
@@ -27,5 +31,25 @@ public class MovieItemDetailsActivity extends AppCompatActivity {
         mVideoHolder.getmNameView().setText(mVideoItem.getName());
         mVideoHolder.getmTextDescription().setText(mVideoItem.getDescription());
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.action_menu_movie_item_details, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch(item.getItemId()){
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                System.out.println("here");
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

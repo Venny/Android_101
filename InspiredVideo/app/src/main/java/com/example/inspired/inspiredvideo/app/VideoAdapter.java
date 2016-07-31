@@ -18,9 +18,10 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoViewHolder>{
     private ArrayList<VideoItem> mVideoItems;
     private OnItemClickListener mOnItemClickListener;
 
-    public VideoAdapter(ArrayList<VideoItem> videoItems, OnItemClickListener onItemClickListener) {
-        mVideoItems = videoItems;
-        mOnItemClickListener = onItemClickListener;
+    public VideoAdapter(ArrayList<VideoItem> videoItems,
+                        OnItemClickListener onItemClickListener) {
+        this.mVideoItems = videoItems;
+        this.mOnItemClickListener = onItemClickListener;
     }
 
     // Creating new view grid items.

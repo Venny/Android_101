@@ -27,8 +27,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLinearLayoutManager;
     private RecyclerView.LayoutManager mGridLayoutManager;
+    private ArrayList<VideoItem> mData = new ArrayList<>();
     private ArrayList<VideoItem> mVideoItems = new ArrayList<>();
-    private boolean toggleLayout = false;
+    private boolean mToggleLayout = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,17 +44,18 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         int img1 = R.drawable.lady;
         int img2 = R.drawable.biliard;
-        mVideoItems.add(new VideoItem("Ghostbusters", "Following a ghost invasion of Manhattan, paranormal enthusiasts Erin Gilbert and Abby Yates, nuclear engineer Jillian...", img1, mVideoItems.size(), 2));
-        mVideoItems.add(new VideoItem("Star Trek Beyond", "The USS Enterprise crew explores the furthest reaches of uncharted space, where they ...", img2, mVideoItems.size(), 2));
-        mVideoItems.add(new VideoItem("The Legend of Tarzan", "Tarzan, having acclimated to life in London, is called back to his former home in the jungle to ...", img1, mVideoItems.size(), 3));
-        mVideoItems.add(new VideoItem("The Secret Life of Pets", "sfdgrdg", img2, mVideoItems.size(), 1));
-        mVideoItems.add(new VideoItem("Me Before You", "A girl in a small town forms an unlikely bond with a recently-paralyzed man she's taking care of.\n", img1, mVideoItems.size(), 3));
+        mData.add(new VideoItem("Ghostbusters", "Following a ghost invasion of Manhattan, paranormal enthusiasts Erin Gilbert and Abby Yates, nuclear engineer Jillian...", img1, mData.size(), 2));
+        mData.add(new VideoItem("Star Trek Beyond", "The USS Enterprise crew explores the furthest reaches of uncharted space, where they ...", img2, mData.size(), 2));
+        mData.add(new VideoItem("The Legend of Tarzan", "Tarzan, having acclimated to life in London, is called back to his former home in the jungle to ...", img1, mData.size(), 3));
+        mData.add(new VideoItem("The Secret Life of Pets", "sfdgrdg", img2, mData.size(), 1));
+        mData.add(new VideoItem("Me Before You", "A girl in a small town forms an unlikely bond with a recently-paralyzed man she's taking care of.\n", img1, mData.size(), 3));
+        mVideoItems.addAll(mData);
 
         // Specifying the Layout manager.
         mLinearLayoutManager = new LinearLayoutManager(this);
         mGridLayoutManager = new GridLayoutManager(this, 2);
         mRecyclerView.setLayoutManager(mLinearLayoutManager);
-        toggleLayout = true;
+        mToggleLayout = true;
 
         // Specifying the Adapter.
         mAdapter = new VideoAdapter(mVideoItems, new OnItemClickListener() {
@@ -81,12 +83,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         toggleBtn.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                if(toggleLayout){
+                if(mToggleLayout){
                     mRecyclerView.setLayoutManager(mGridLayoutManager);
-                    toggleLayout = false;
+                    mToggleLayout = false;
                 } else {
                     mRecyclerView.setLayoutManager(mLinearLayoutManager);
-                    toggleLayout = true;
+                    mToggleLayout = true;
                 }
                 return true;
             };
@@ -103,14 +105,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        ArrayList<VideoItem> videoItemsByGenre = null;
         VideoAdapter videoAdapter = (VideoAdapter) mRecyclerView.getAdapter();
-        if(position > 0){
-            videoItemsByGenre = getmVideoItemsByGenre(position);
-        } else {
-            videoItemsByGenre = mVideoItems;
-        }
-        videoAdapter.setmVideoItems(videoItemsByGenre);
+        this.setmVideoItemsByGenre(position);
+        videoAdapter.setmVideoItems(mVideoItems);
         videoAdapter.notifyDataSetChanged();
     }
 
@@ -121,16 +118,16 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         videoAdapter.notifyDataSetChanged();
     }
 
-    private ArrayList<VideoItem> getmVideoItemsByGenre(int currentGenreId){
+    private void setmVideoItemsByGenre(int currentGenreId){
         VideoItem videoItem;
         ArrayList<VideoItem> videoItemsByGenre = new ArrayList<>();
-        for (int i = 0; i < mVideoItems.size(); i++){
-            videoItem = mVideoItems.get(i);
-            if(videoItem.getMovieGenreId() == currentGenreId){
+        for (int i = 0; i < mData.size(); i++){
+            videoItem = mData.get(i);
+            if(currentGenreId == 0 || videoItem.getMovieGenreId() == currentGenreId){
                 videoItemsByGenre.add(videoItem);
             }
         }
 
-        return videoItemsByGenre;
+        mVideoItems = videoItemsByGenre;
     }
 }

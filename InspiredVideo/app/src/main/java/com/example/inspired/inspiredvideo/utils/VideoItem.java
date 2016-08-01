@@ -7,17 +7,17 @@ import java.io.Serializable;
  */
 public class VideoItem implements Serializable {
     private String name;
-    private int position;
     private String description;
     private int imageRes;
     private int movieGenreId;
+    private boolean isFavourite;
 
-    public VideoItem(String name, String description, int imageRes, int position, int movieGenreId) {
+    public VideoItem(String name, String description, int imageRes, int movieGenreId) {
         this.name = name;
         this.description = description;
         this.imageRes = imageRes;
-        this.position = position;
         this.movieGenreId = movieGenreId;
+        this.isFavourite = false;
     }
 
     public String getName() {
@@ -32,11 +32,15 @@ public class VideoItem implements Serializable {
         return imageRes;
     }
 
-    public int getPosition() {
-        return position;
-    }
-
     public int getMovieGenreId() {
         return movieGenreId;
+    }
+
+    public void setIsFavourite(boolean favourite) {
+        this.isFavourite = favourite;
+    }
+
+    public boolean isFavourite() {
+        return isFavourite;
     }
 }

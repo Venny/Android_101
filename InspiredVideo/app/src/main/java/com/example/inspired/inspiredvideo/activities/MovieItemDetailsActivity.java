@@ -1,7 +1,9 @@
 package com.example.inspired.inspiredvideo.activities;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.annotation.DrawableRes;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -17,12 +19,14 @@ import com.example.inspired.inspiredvideo.utils.VideoViewHolder;
  * Created by inspired on 29.07.16.
  */
 public class MovieItemDetailsActivity extends AppCompatActivity {
+    private VideoItem mVideoItem;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         Intent intent = getIntent();
-        VideoItem mVideoItem = (VideoItem) intent.getSerializableExtra("item");
+        mVideoItem = (VideoItem) intent.getSerializableExtra("item");
         setContentView(R.layout.movie_item_details);
         View view = this.getWindow().getDecorView().findViewById(android.R.id.content);
         VideoViewHolder mVideoHolder = new VideoViewHolder(view);
@@ -30,13 +34,29 @@ public class MovieItemDetailsActivity extends AppCompatActivity {
         mVideoHolder.getmImageView().setImageResource(mVideoItem.getImageRes());
         mVideoHolder.getmNameView().setText(mVideoItem.getName());
         mVideoHolder.getmTextDescription().setText(mVideoItem.getDescription());
-
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.action_menu_movie_item_details, menu);
+        MenuItem favouriteBtn = menu.findItem(R.id.favourite_btn);
+
+
+        favouriteBtn.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                if(mVideoItem.isFavourite()){
+                    mVideoItem.setIsFavourite(false);
+                    item.setIcon(R.drawable.ic_favorite_border_white_24dp);
+                } else{
+                    mVideoItem.setIsFavourite(true);
+                    item.setIcon(R.drawable.ic_favorite_white_24dp);
+                }
+                return true;
+            }
+        });
+
         return true;
     }
 
@@ -46,7 +66,6 @@ public class MovieItemDetailsActivity extends AppCompatActivity {
             // Respond to the action bar's Up/Home button
             case android.R.id.home:
                 NavUtils.navigateUpFromSameTask(this);
-                System.out.println("here");
                 return true;
         }
 

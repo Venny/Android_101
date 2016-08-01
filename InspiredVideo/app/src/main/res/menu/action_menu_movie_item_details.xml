@@ -4,7 +4,7 @@
 
     <item android:id="@+id/favourite_btn"
         android:title="@android:string/selectTextMode"
-        android:icon="@drawable/ic_star_border_white_24dp"
+        android:icon="@drawable/ic_favorite_border_white_24dp"
         app:showAsAction="ifRoom"
         android:orderInCategory="0"/>
     <!-- Settings, should always be in the overflow -->

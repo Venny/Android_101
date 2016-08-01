@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -38,6 +37,7 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_weight="1.7"
+            android:background="@color/colorTransparent"
             android:layout_height="0dp">
 
             <TextView
@@ -47,6 +47,7 @@
                 android:paddingRight="@dimen/activity_horizontal_margin"
                 android:text="New Text"
                 android:id="@+id/nameTextView"
+                android:background="@color/colorTransparent"
                 android:textStyle="bold" />
 
             <TextView
@@ -56,9 +57,9 @@
                 android:paddingRight="@dimen/activity_horizontal_margin"
                 android:layout_below="@id/nameTextView"
                 android:text="New Texcdscsfvvft"
+                android:background="@color/colorTransparent"
                 android:id="@+id/descTextView"/>
         </RelativeLayout>
-
     </LinearLayout>
 
     <LinearLayout

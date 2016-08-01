@@ -27,8 +27,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLinearLayoutManager;
     private RecyclerView.LayoutManager mGridLayoutManager;
-    private ArrayList<VideoItem> mData = new ArrayList<>();
-    private ArrayList<VideoItem> mVideoItems = new ArrayList<>();
     private boolean mToggleLayout = false;
 
     @Override
@@ -44,12 +42,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         int img1 = R.drawable.lady;
         int img2 = R.drawable.biliard;
-        mData.add(new VideoItem("Ghostbusters", "Following a ghost invasion of Manhattan, paranormal enthusiasts Erin Gilbert and Abby Yates, nuclear engineer Jillian...", img1, mData.size(), 2));
-        mData.add(new VideoItem("Star Trek Beyond", "The USS Enterprise crew explores the furthest reaches of uncharted space, where they ...", img2, mData.size(), 2));
-        mData.add(new VideoItem("The Legend of Tarzan", "Tarzan, having acclimated to life in London, is called back to his former home in the jungle to ...", img1, mData.size(), 3));
-        mData.add(new VideoItem("The Secret Life of Pets", "sfdgrdg", img2, mData.size(), 1));
-        mData.add(new VideoItem("Me Before You", "A girl in a small town forms an unlikely bond with a recently-paralyzed man she's taking care of.\n", img1, mData.size(), 3));
-        mVideoItems.addAll(mData);
+        Context.mData.add(new VideoItem("Ghostbusters", "Following a ghost invasion of Manhattan, paranormal enthusiasts Erin Gilbert and Abby Yates, nuclear engineer Jillian...", img1,  2));
+        Context.mData.add(new VideoItem("Star Trek Beyond", "The USS Enterprise crew explores the furthest reaches of uncharted space, where they ...", img2,  2));
+        Context.mData.add(new VideoItem("The Legend of Tarzan", "Tarzan, having acclimated to life in London, is called back to his former home in the jungle to ...", img1, 3));
+        Context.mData.add(new VideoItem("The Secret Life of Pets", "sfdgrdg", img2, 1));
+        Context.mData.add(new VideoItem("Me Before You", "A girl in a small town forms an unlikely bond with a recently-paralyzed man she's taking care of.\n", img1,  3));
+        Context.mCurrentData.addAll(Context.mData);
 
         // Specifying the Layout manager.
         mLinearLayoutManager = new LinearLayoutManager(this);
@@ -58,11 +56,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         mToggleLayout = true;
 
         // Specifying the Adapter.
-        mAdapter = new VideoAdapter(mVideoItems, new OnItemClickListener() {
+        mAdapter = new VideoAdapter(Context.mCurrentData, new OnItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {
                 Intent myIntent = new Intent(MainActivity.this, MovieItemDetailsActivity.class);
-                VideoItem mVideoItem = mVideoItems.get(position);
+                VideoItem mVideoItem = Context.mCurrentData.get(position);
                 myIntent.putExtra("item", mVideoItem);
                 MainActivity.this.startActivity(myIntent);
             }
@@ -107,27 +105,27 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         VideoAdapter videoAdapter = (VideoAdapter) mRecyclerView.getAdapter();
         this.setmVideoItemsByGenre(position);
-        videoAdapter.setmVideoItems(mVideoItems);
+        videoAdapter.setmVideoItems(Context.mCurrentData);
         videoAdapter.notifyDataSetChanged();
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
         VideoAdapter videoAdapter = (VideoAdapter) mRecyclerView.getAdapter();
-        videoAdapter.setmVideoItems(mVideoItems);
+        videoAdapter.setmVideoItems(Context.mCurrentData);
         videoAdapter.notifyDataSetChanged();
     }
 
     private void setmVideoItemsByGenre(int currentGenreId){
         VideoItem videoItem;
         ArrayList<VideoItem> videoItemsByGenre = new ArrayList<>();
-        for (int i = 0; i < mData.size(); i++){
-            videoItem = mData.get(i);
+        for (int i = 0; i < Context.mData.size(); i++){
+            videoItem = Context.mData.get(i);
             if(currentGenreId == 0 || videoItem.getMovieGenreId() == currentGenreId){
                 videoItemsByGenre.add(videoItem);
             }
         }
 
-        mVideoItems = videoItemsByGenre;
+        Context.mCurrentData = videoItemsByGenre;
     }
 }

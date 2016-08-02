@@ -2,11 +2,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <item android:id="@+id/filter_favourite"
+        android:title="@android:string/selectTextMode"
+        android:icon="@drawable/ic_favorite_border_white_24dp"
+        app:showAsAction="ifRoom"
+        android:orderInCategory="0"/>
+
     <item android:id="@+id/spinner"
         android:title="@string/spinner"
         app:actionViewClass="android.widget.Spinner"
         android:color="@color/colorPureWhite"
-
         app:showAsAction="ifRoom"/>
 
     <item android:id="@+id/toggle_button"

@@ -52,7 +52,8 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoViewHolder>{
         return mVideoItems.size();
     }
 
-    public void setmVideoItems(ArrayList<VideoItem> mVideoItems) {
+    public void updatemVideoItems(ArrayList<VideoItem> mVideoItems) {
         this.mVideoItems = mVideoItems;
+        this.notifyDataSetChanged();
     }
 }

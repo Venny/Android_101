@@ -10,14 +10,18 @@ public class VideoItem implements Serializable {
     private String description;
     private int imageRes;
     private int movieGenreId;
+    private int position;
+    private int currentPosition;
     private boolean isFavourite;
 
-    public VideoItem(String name, String description, int imageRes, int movieGenreId) {
+    public VideoItem(String name, String description, int imageRes, int movieGenreId, int position) {
         this.name = name;
         this.description = description;
         this.imageRes = imageRes;
         this.movieGenreId = movieGenreId;
         this.isFavourite = false;
+        this.position = position;
+        this.currentPosition =position;
     }
 
     public String getName() {
@@ -42,5 +46,17 @@ public class VideoItem implements Serializable {
 
     public boolean isFavourite() {
         return isFavourite;
+    }
+
+    public int getCurrentPosition() {
+        return currentPosition;
+    }
+
+    public void setCurrentPosition(int currentPosition) {
+        this.currentPosition = currentPosition;
+    }
+
+    public int getPosition() {
+        return position;
     }
 }

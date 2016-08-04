@@ -17,7 +17,7 @@ public class Context {
         for (int i = 0; i < Context.mData.size(); i++){
             videoItem = Context.mData.get(i);
             if(currentGenreId == 0 || videoItem.getMovieGenreId() == currentGenreId){
-                videoItem.setCurrentPosition(i);
+                videoItem.setCurrentPosition(videoItemsByGenre.size());
                 videoItemsByGenre.add(videoItem);
             }
         }
@@ -31,7 +31,7 @@ public class Context {
         for (int i = 0; i < Context.mCurrentData.size(); i++){
             videoItem = Context.mCurrentData.get(i);
             if(videoItem.isFavourite()){
-                videoItem.setCurrentPosition(i);
+                videoItem.setCurrentPosition(videoItemsByFavourite.size());
                 videoItemsByFavourite.add(videoItem);
             }
         }

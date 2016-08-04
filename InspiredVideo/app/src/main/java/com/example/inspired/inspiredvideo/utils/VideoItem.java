@@ -21,7 +21,7 @@ public class VideoItem implements Serializable {
         this.movieGenreId = movieGenreId;
         this.isFavourite = false;
         this.position = position;
-        this.currentPosition =position;
+        this.currentPosition = position;
     }
 
     public String getName() {

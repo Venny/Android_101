@@ -74,6 +74,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         MenuItem toggleBtn = menu.findItem(R.id.toggle_button);
         final MenuItem spinnerBtn = menu.findItem(R.id.spinner);
         final MenuItem favouriteFilterBtn = menu.findItem(R.id.filter_favourite);
+        final VideoAdapter videoAdapter = (VideoAdapter) mRecyclerView.getAdapter();
         Spinner spinner = (Spinner) MenuItemCompat.getActionView(spinnerBtn);
 
         // Add an event to the Toggle button.
@@ -94,8 +95,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         });
 
         favouriteFilterBtn.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            VideoAdapter videoAdapter = (VideoAdapter) mRecyclerView.getAdapter();
-
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 if(favouritesEnabled){
@@ -107,11 +106,13 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     item.setIcon(R.drawable.ic_favorite_white_24dp);
                     favouritesEnabled = true;
                 }
-                videoAdapter.updatemVideoItems(Context.mCurrentData);
+                videoAdapter.updatemVideoItems(Context.mCurrentData, favouritesEnabled);
                 return true;
             }
         });
 
+        // Add Favourite menu item instance
+        videoAdapter.setmFavouriteMenuItem(favouriteFilterBtn);
         // Add a dropdown menu to the Spinner.
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.toolbar_spinner_items_array, R.layout.toolbar_spinner_item);
         adapter.setDropDownViewResource(R.layout.toolbar_spinner_item);
@@ -126,12 +127,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         Context.setmVideoItemsByGenre(position);
         currentGenre = position;
         favouritesEnabled = false;
-        videoAdapter.updatemVideoItems(Context.mCurrentData);
+        videoAdapter.updatemVideoItems(Context.mCurrentData, favouritesEnabled);
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
         VideoAdapter videoAdapter = (VideoAdapter) mRecyclerView.getAdapter();
-        videoAdapter.updatemVideoItems(Context.mCurrentData);
+        videoAdapter.updatemVideoItems(Context.mCurrentData, false);
     }
 }

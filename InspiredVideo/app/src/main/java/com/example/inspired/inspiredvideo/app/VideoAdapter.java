@@ -2,6 +2,7 @@ package com.example.inspired.inspiredvideo.app;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -17,6 +18,7 @@ import java.util.ArrayList;
 public class VideoAdapter extends RecyclerView.Adapter<VideoViewHolder>{
     private ArrayList<VideoItem> mVideoItems;
     private OnItemClickListener mOnItemClickListener;
+    private MenuItem mFavouriteMenuItem;
 
     public VideoAdapter(ArrayList<VideoItem> videoItems,
                         OnItemClickListener onItemClickListener) {
@@ -52,8 +54,15 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoViewHolder>{
         return mVideoItems.size();
     }
 
-    public void updatemVideoItems(ArrayList<VideoItem> mVideoItems) {
+    public void updatemVideoItems(ArrayList<VideoItem> mVideoItems, boolean favouritesEnabled) {
+        if(!favouritesEnabled){
+            mFavouriteMenuItem.setIcon(R.drawable.ic_favorite_border_white_24dp);
+        }
         this.mVideoItems = mVideoItems;
         this.notifyDataSetChanged();
+    }
+
+    public void setmFavouriteMenuItem(MenuItem mFavouriteMenuItem) {
+        this.mFavouriteMenuItem = mFavouriteMenuItem;
     }
 }

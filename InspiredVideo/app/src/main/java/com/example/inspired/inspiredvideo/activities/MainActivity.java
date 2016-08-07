@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.AttributeSet;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -31,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.movies_list);
         mRecyclerView = (RecyclerView) findViewById(R.id.video_recycler_view);
 
         // Because we won't change the layout size.
@@ -41,11 +42,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         int img1 = R.drawable.lady;
         int img2 = R.drawable.biliard;
-        Context.mData.add(new VideoItem("Ghostbusters", "Following a ghost invasion of Manhattan, paranormal enthusiasts Erin Gilbert and Abby Yates, nuclear engineer Jillian...", img1,  2, Context.mData.size()));
-        Context.mData.add(new VideoItem("Star Trek Beyond", "The USS Enterprise crew explores the furthest reaches of uncharted space, where they ...", img2,  2, Context.mData.size()));
+        Context.mData.add(new VideoItem("Ghostbusters", "Following a ghost invasion of Manhattan, paranormal enthusiasts Erin Gilbert and Abby Yates, nuclear engineer Jillian...", img1, 2, Context.mData.size()));
+        Context.mData.add(new VideoItem("Star Trek Beyond", "The USS Enterprise crew explores the furthest reaches of uncharted space, where they ...", img2, 2, Context.mData.size()));
         Context.mData.add(new VideoItem("The Legend of Tarzan", "Tarzan, having acclimated to life in London, is called back to his former home in the jungle to ...", img1, 3, Context.mData.size()));
         Context.mData.add(new VideoItem("The Secret Life of Pets", "sfdgrdg", img2, 1, Context.mData.size()));
-        Context.mData.add(new VideoItem("Me Before You", "A girl in a small town forms an unlikely bond with a recently-paralyzed man she's taking care of.\n", img1,  3, Context.mData.size()));
+        Context.mData.add(new VideoItem("Me Before You", "A girl in a small town forms an unlikely bond with a recently-paralyzed man she's taking care of.\n", img1, 3, Context.mData.size()));
         Context.mCurrentData.addAll(Context.mData);
 
         // Specifying the Layout manager.
@@ -83,7 +84,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                if(mToggleLayout){
+                if (mToggleLayout) {
                     mRecyclerView.setLayoutManager(mGridLayoutManager);
                     mToggleLayout = false;
                 } else {
@@ -91,13 +92,15 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     mToggleLayout = true;
                 }
                 return true;
-            };
+            }
+
+            ;
         });
 
         favouriteFilterBtn.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                if(favouritesEnabled){
+                if (favouritesEnabled) {
                     Context.setmVideoItemsByGenre(currentGenre);
                     item.setIcon(R.drawable.ic_favorite_border_white_24dp);
                     favouritesEnabled = false;

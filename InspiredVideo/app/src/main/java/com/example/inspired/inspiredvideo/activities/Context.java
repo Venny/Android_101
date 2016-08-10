@@ -1,6 +1,6 @@
 package com.example.inspired.inspiredvideo.activities;
 
-import com.example.inspired.inspiredvideo.utils.VideoItem;
+import com.example.inspired.inspiredvideo.utils.MovieItem;
 
 import java.util.ArrayList;
 
@@ -8,34 +8,34 @@ import java.util.ArrayList;
  * Created by inspired on 01.08.16.
  */
 public class Context {
-    protected static ArrayList<VideoItem> mData = new ArrayList<>();
-    protected static ArrayList<VideoItem> mCurrentData = new ArrayList<>();
+    public static ArrayList<MovieItem> mData = new ArrayList<>();
+    public static ArrayList<MovieItem> mCurrentData = new ArrayList<>();
 
-    protected static void setmVideoItemsByGenre(int currentGenreId){
-        VideoItem videoItem;
-        ArrayList<VideoItem> videoItemsByGenre = new ArrayList<>();
+    public static void setmVideoItemsByGenre(int currentGenreId){
+        MovieItem movieItem;
+        ArrayList<MovieItem> movieItemsByGenre = new ArrayList<>();
         for (int i = 0; i < Context.mData.size(); i++){
-            videoItem = Context.mData.get(i);
-            if(currentGenreId == 0 || videoItem.getMovieGenreId() == currentGenreId){
-                videoItem.setCurrentPosition(videoItemsByGenre.size());
-                videoItemsByGenre.add(videoItem);
+            movieItem = Context.mData.get(i);
+            if(currentGenreId == 0 || movieItem.getMovieGenreId() == currentGenreId){
+                movieItem.setCurrentPosition(movieItemsByGenre.size());
+                movieItemsByGenre.add(movieItem);
             }
         }
 
-        Context.mCurrentData = videoItemsByGenre;
+        Context.mCurrentData = movieItemsByGenre;
     }
 
-    protected static void setmVideoItemsByFavourite(){
-        VideoItem videoItem;
-        ArrayList<VideoItem> videoItemsByFavourite = new ArrayList<>();
+    public static void setmVideoItemsByFavourite(){
+        MovieItem movieItem;
+        ArrayList<MovieItem> movieItemsByFavourite = new ArrayList<>();
         for (int i = 0; i < Context.mCurrentData.size(); i++){
-            videoItem = Context.mCurrentData.get(i);
-            if(videoItem.isFavourite()){
-                videoItem.setCurrentPosition(videoItemsByFavourite.size());
-                videoItemsByFavourite.add(videoItem);
+            movieItem = Context.mCurrentData.get(i);
+            if(movieItem.isFavourite()){
+                movieItem.setCurrentPosition(movieItemsByFavourite.size());
+                movieItemsByFavourite.add(movieItem);
             }
         }
 
-        Context.mCurrentData = videoItemsByFavourite;
+        Context.mCurrentData = movieItemsByFavourite;
     }
 }

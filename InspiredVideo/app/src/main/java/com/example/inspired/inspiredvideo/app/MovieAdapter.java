@@ -7,38 +7,38 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.inspired.inspiredvideo.R;
-import com.example.inspired.inspiredvideo.utils.VideoItem;
-import com.example.inspired.inspiredvideo.utils.VideoViewHolder;
+import com.example.inspired.inspiredvideo.utils.MovieItem;
+import com.example.inspired.inspiredvideo.utils.MovieViewHolder;
 
 import java.util.ArrayList;
 
 /**
  * Created by inspired on 12.07.16.
  */
-public class VideoAdapter extends RecyclerView.Adapter<VideoViewHolder>{
-    private ArrayList<VideoItem> mVideoItems;
+public class MovieAdapter extends RecyclerView.Adapter<MovieViewHolder>{
+    private ArrayList<MovieItem> mMovieItems;
     private OnItemClickListener mOnItemClickListener;
     private MenuItem mFavouriteMenuItem;
 
-    public VideoAdapter(ArrayList<VideoItem> videoItems,
+    public MovieAdapter(ArrayList<MovieItem> movieItems,
                         OnItemClickListener onItemClickListener) {
-        this.mVideoItems = videoItems;
+        this.mMovieItems = movieItems;
         this.mOnItemClickListener = onItemClickListener;
     }
 
     // Creating new view grid items.
     @Override
-    public VideoViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View vHolder = LayoutInflater.from(parent.getContext()).inflate(R.layout.movie_item, parent, false);
-        return new VideoViewHolder(vHolder);
+    public MovieViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View vHolder = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item, parent, false);
+        return new MovieViewHolder(vHolder);
     }
 
     @Override
-    public void onBindViewHolder(VideoViewHolder holder, final int position) {
-        VideoItem videoItem = mVideoItems.get(position);
-        holder.getmImageView().setImageResource(videoItem.getImageRes());
-        holder.getmNameView().setText(videoItem.getName());
-        holder.getmTextDescription().setText(videoItem.getDescription());
+    public void onBindViewHolder(MovieViewHolder holder, final int position) {
+        MovieItem movieItem = mMovieItems.get(position);
+        holder.getmImageView().setImageResource(movieItem.getImageRes());
+        holder.getmNameView().setText(movieItem.getName());
+        holder.getmTextDescription().setText(movieItem.getDescription());
 
         // Adding click event for every video item.
         holder.itemView.setOnClickListener(new View.OnClickListener(){
@@ -51,14 +51,14 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoViewHolder>{
 
     @Override
     public int getItemCount() {
-        return mVideoItems.size();
+        return mMovieItems.size();
     }
 
-    public void updatemVideoItems(ArrayList<VideoItem> mVideoItems, boolean favouritesEnabled) {
+    public void updatemVideoItems(ArrayList<MovieItem> mMovieItems, boolean favouritesEnabled) {
         if(!favouritesEnabled){
             mFavouriteMenuItem.setIcon(R.drawable.ic_favorite_border_white_24dp);
         }
-        this.mVideoItems = mVideoItems;
+        this.mMovieItems = mMovieItems;
         this.notifyDataSetChanged();
     }
 

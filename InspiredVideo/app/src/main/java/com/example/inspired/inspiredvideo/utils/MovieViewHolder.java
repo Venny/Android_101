@@ -10,12 +10,12 @@ import com.example.inspired.inspiredvideo.R;
 /**
  * Created by inspired on 26.07.16.
  */
-public class VideoViewHolder extends RecyclerView.ViewHolder {
+public class MovieViewHolder extends RecyclerView.ViewHolder {
     private ImageView mImageView;
     private TextView mNameView;
     private TextView mTextDescription;
 
-    public VideoViewHolder(View itemView) {
+    public MovieViewHolder(View itemView) {
         super(itemView);
         mImageView = (ImageView) itemView.findViewById(R.id.imageView);
         mNameView = (TextView) itemView.findViewById(R.id.nameTextView);

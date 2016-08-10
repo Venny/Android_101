@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Created by inspired on 12.07.16.
  */
-public class VideoItem implements Serializable {
+public class MovieItem implements Serializable {
     private String name;
     private String description;
     private int imageRes;
@@ -14,7 +14,7 @@ public class VideoItem implements Serializable {
     private int currentPosition;
     private boolean isFavourite;
 
-    public VideoItem(String name, String description, int imageRes, int movieGenreId, int position) {
+    public MovieItem(String name, String description, int imageRes, int movieGenreId, int position) {
         this.name = name;
         this.description = description;
         this.imageRes = imageRes;

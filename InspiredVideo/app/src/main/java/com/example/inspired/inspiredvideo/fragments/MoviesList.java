@@ -2,6 +2,7 @@ package com.example.inspired.inspiredvideo.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -17,7 +18,6 @@ public class MoviesList extends Fragment {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLinearLayoutManager;
-    private RecyclerView.LayoutManager mGridLayoutManager;
 
 
     public MoviesList() {
@@ -54,19 +54,18 @@ public class MoviesList extends Fragment {
 
         // Specifying the Layout manager.
         mLinearLayoutManager = new LinearLayoutManager(inflater.getContext());
-        mGridLayoutManager = new GridLayoutManager(inflater.getContext(), 2);
         mRecyclerView.setLayoutManager(mLinearLayoutManager);
 
         // Specifying the Adapter.
         mAdapter = new MovieAdapter(com.example.inspired.inspiredvideo.activities.Context.mCurrentData, new OnItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {
-                //MovieItem mVideoItem = Context.mCurrentData.get(position);
                 MovieItemDetails nextFrag= MovieItemDetails.newInstance(position);
-                getFragmentManager().beginTransaction()
-                        .replace(R.id.headlines_fragment, nextFrag, null)
-                        .addToBackStack(null)
-                        .commit();
+                System.out.println(nextFrag);
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.headlines_fragment, nextFrag);
+                transaction.addToBackStack(null);
+                transaction.commit();
             }
         });
         mRecyclerView.setAdapter(mAdapter);
@@ -76,13 +75,5 @@ public class MoviesList extends Fragment {
 
     public RecyclerView getmRecyclerView(){
         return mRecyclerView;
-    }
-
-    public RecyclerView.LayoutManager getmGridLayoutManager() {
-        return mGridLayoutManager;
-    }
-
-    public RecyclerView.LayoutManager getmLinearLayoutManager() {
-        return mGridLayoutManager;
     }
 }

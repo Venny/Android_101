@@ -3,6 +3,7 @@ package com.example.inspired.inspiredvideo.fragments;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -42,6 +43,7 @@ public class MovieItemDetails extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_movie_item_details, container, false);
         MovieViewHolder movieViewHolder = new MovieViewHolder(view);
+        System.out.println("here");
 
         movieViewHolder.getmImageView().setImageResource(mMovieItem.getImageRes());
         movieViewHolder.getmNameView().setText(mMovieItem.getName());
@@ -57,4 +59,6 @@ public class MovieItemDetails extends Fragment {
         Context.mCurrentData.set(mMovieItem.getCurrentPosition(), mMovieItem);
         return true;
     }
+
+
 }

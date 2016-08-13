@@ -1,4 +1,4 @@
-package com.example.inspired.inspiredvideo.app;
+package com.example.inspired.inspiredvideo.view.adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -7,8 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.inspired.inspiredvideo.R;
+import com.example.inspired.inspiredvideo.app.OnItemClickListener;
 import com.example.inspired.inspiredvideo.utils.MovieItem;
-import com.example.inspired.inspiredvideo.utils.MovieViewHolder;
 
 import java.util.ArrayList;
 
@@ -18,7 +18,6 @@ import java.util.ArrayList;
 public class MovieAdapter extends RecyclerView.Adapter<MovieViewHolder>{
     private ArrayList<MovieItem> mMovieItems;
     private OnItemClickListener mOnItemClickListener;
-    private MenuItem mFavouriteMenuItem;
 
     public MovieAdapter(ArrayList<MovieItem> movieItems,
                         OnItemClickListener onItemClickListener) {
@@ -54,15 +53,8 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieViewHolder>{
         return mMovieItems.size();
     }
 
-    public void updatemVideoItems(ArrayList<MovieItem> mMovieItems, boolean favouritesEnabled) {
-        if(!favouritesEnabled){
-            mFavouriteMenuItem.setIcon(R.drawable.ic_favorite_border_white_24dp);
-        }
+    public void updatemVideoItems(ArrayList<MovieItem> mMovieItems) {
         this.mMovieItems = mMovieItems;
         this.notifyDataSetChanged();
-    }
-
-    public void setmFavouriteMenuItem(MenuItem mFavouriteMenuItem) {
-        this.mFavouriteMenuItem = mFavouriteMenuItem;
     }
 }

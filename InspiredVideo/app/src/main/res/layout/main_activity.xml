@@ -4,12 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorLightYellow"
-    tools:context=".activities.MainActivity">
+    tools:context=".activities.MainActivity"
+    android:orientation="horizontal">
 
-
-    <fragment android:name="com.example.inspired.inspiredvideo.fragments.MoviesList"
-        android:id="@+id/headlines_fragment"
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/fragment_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout="@layout/fragment_movies_list" />
+        android:layout_height="wrap_content" />
 </LinearLayout>

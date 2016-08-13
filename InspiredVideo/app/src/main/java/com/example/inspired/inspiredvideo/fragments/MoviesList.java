@@ -3,10 +3,11 @@ package com.example.inspired.inspiredvideo.fragments;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -19,14 +20,18 @@ public class MoviesList extends Fragment {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLinearLayoutManager;
 
+    private static RecyclerView mRecycleView;
+
 
     public MoviesList() {
         // Required empty public constructor
     }
 
-    public static MoviesList newInstance(String param1, String param2) {
+    public static MoviesList newInstance(String param1) {
         MoviesList fragment = new MoviesList();
         Bundle args = new Bundle();
+
+        args.putString("someInt", param1);
         fragment.setArguments(args);
         return fragment;
     }
@@ -45,8 +50,8 @@ public class MoviesList extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View myLayoutView = inflater.inflate(R.layout.fragment_movies_list, container, false);
-
         mRecyclerView = (RecyclerView) myLayoutView.findViewById(R.id.video_recycler_view);
+
         // Because we won't change the layout size.
         if (mRecyclerView != null) {
             mRecyclerView.setHasFixedSize(true);
@@ -61,14 +66,16 @@ public class MoviesList extends Fragment {
             @Override
             public void onItemClick(View v, int position) {
                 MovieItemDetails nextFrag= MovieItemDetails.newInstance(position);
-                System.out.println(nextFrag);
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.headlines_fragment, nextFrag);
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+                transaction.replace(R.id.fragment_container, nextFrag);
                 transaction.addToBackStack(null);
                 transaction.commit();
             }
         });
+
         mRecyclerView.setAdapter(mAdapter);
+
 
         return myLayoutView;
     }

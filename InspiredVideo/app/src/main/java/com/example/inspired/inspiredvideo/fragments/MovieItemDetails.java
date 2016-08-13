@@ -43,11 +43,11 @@ public class MovieItemDetails extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_movie_item_details, container, false);
         MovieViewHolder movieViewHolder = new MovieViewHolder(view);
-        System.out.println("here");
 
         movieViewHolder.getmImageView().setImageResource(mMovieItem.getImageRes());
         movieViewHolder.getmNameView().setText(mMovieItem.getName());
         movieViewHolder.getmTextDescription().setText(mMovieItem.getDescription());
+        System.out.println();
         return view;
     }
 

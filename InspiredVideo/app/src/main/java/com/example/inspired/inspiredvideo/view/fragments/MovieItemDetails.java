@@ -37,6 +37,7 @@ public class MovieItemDetails extends Fragment {
         if (getArguments() != null) {
             mMovieItem = Context.mCurrentData.get(getArguments().getInt(POSITION));
         }
+
         setHasOptionsMenu(true);
     }
 
@@ -55,7 +56,6 @@ public class MovieItemDetails extends Fragment {
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
         menu.clear();
         inflater.inflate(R.menu.action_menu_movie_item_details, menu);
         if(mMovieItem.isFavourite()) {
@@ -69,6 +69,9 @@ public class MovieItemDetails extends Fragment {
         switch (item.getItemId()){
             case R.id.favourite_btn:
                 setFavourite(item);
+                return true;
+            case android.R.id.home:
+                getFragmentManager().popBackStack();
                 return true;
             default:
                 return true;

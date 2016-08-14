@@ -1,5 +1,6 @@
 package com.example.inspired.inspiredvideo.view.activities;
 
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,7 +14,7 @@ import com.example.inspired.inspiredvideo.view.adapter.MovieAdapter;
 import com.example.inspired.inspiredvideo.view.fragments.MoviesList;
 import com.example.inspired.inspiredvideo.utils.MovieItem;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity  implements FragmentManager.OnBackStackChangedListener{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +41,11 @@ public class MainActivity extends AppCompatActivity {
         // Creating dynamically the fragment.
         MoviesList firstFragment = MoviesList.newInstance("");
 
+        // Listen for changes in the back stack.
+        getSupportFragmentManager().addOnBackStackChangedListener(this);
+        // Handle whe activity is recreated like on orientation Change.
+        shouldDisplayHomeUp();
+
         getSupportFragmentManager().beginTransaction()
                                    .add(R.id.fragment_container, firstFragment)
                                    .commit();
@@ -49,6 +55,24 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.action_menu_layout, menu);
+        return true;
+    }
+
+    @Override
+    public void onBackStackChanged() {
+        shouldDisplayHomeUp();
+    }
+
+    private void shouldDisplayHomeUp() {
+        // Enable Up button only if there are entries in the back stack
+        boolean canBack = getSupportFragmentManager().getBackStackEntryCount() > 0;
+        getSupportActionBar().setDisplayHomeAsUpEnabled(canBack);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp(){
+        //This method is called when the up button is pressed. Just the pop back stack.
+        getSupportFragmentManager().popBackStack();
         return true;
     }
 }

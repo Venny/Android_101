@@ -7,16 +7,9 @@
     tools:context=".view.activities.MainActivity"
     android:orientation="horizontal">
 
-    <include layout="@layout/inspired_toolbar"
-        android:layout_width="match_parent"
-        android:layout_alignParentTop="true"
-        android:layout_height="wrap_content"
-        android:id="@+id/include" />
-
     <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignEnd="@id/my_awesome_toolbar"
-        android:layout_below="@+id/include" />
+        android:layout_alignEnd="@id/my_awesome_toolbar" />
 </RelativeLayout>

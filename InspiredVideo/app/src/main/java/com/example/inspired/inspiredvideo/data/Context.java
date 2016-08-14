@@ -13,6 +13,7 @@ public class Context {
 
     public static boolean setmVideoItemsByGenre(int currentGenreId, boolean favouritesEnabled){
         ArrayList<MovieItem> movieItemsByGenre;
+        ArrayList<MovieItem> temp = mData;
 
         // 1. The Spinner is on the first option: All.
         if(currentGenreId == 0){
@@ -20,7 +21,7 @@ public class Context {
                 updatemVideoItemsByFavourite();
                 return true;
             }
-            Context.mCurrentData = mData;
+            Context.mCurrentData = temp;
             return true;
         }
 
@@ -37,8 +38,8 @@ public class Context {
     private static void updatemVideoItemsByFavourite(){
         MovieItem movieItem;
         ArrayList<MovieItem> movieItemsByFavourite = new ArrayList<>();
-        for (int i = 0; i < Context.mCurrentData.size(); i++){
-            movieItem = Context.mCurrentData.get(i);
+        for (int i = 0; i < Context.mData.size(); i++){
+            movieItem = Context.mData.get(i);
             if(movieItem.isFavourite()){
                 movieItem.setCurrentPosition(movieItemsByFavourite.size());
                 movieItemsByFavourite.add(movieItem);

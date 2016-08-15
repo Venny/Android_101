@@ -14,17 +14,17 @@ import com.example.inspired.inspiredvideo.data.Context;
 import com.example.inspired.inspiredvideo.utils.MovieItem;
 import com.example.inspired.inspiredvideo.view.adapter.MovieViewHolder;
 
-public class MovieItemDetails extends Fragment {
+public class MovieItemDetailsFragment extends Fragment {
     private static String POSITION;
 
     private MovieItem mMovieItem;
 
-    public MovieItemDetails() {
+    public MovieItemDetailsFragment() {
         // Required empty public constructor
     }
 
-    public static MovieItemDetails newInstance(int moviePosition) {
-        MovieItemDetails fragment = new MovieItemDetails();
+    public static MovieItemDetailsFragment newInstance(int moviePosition) {
+        MovieItemDetailsFragment fragment = new MovieItemDetailsFragment();
         Bundle args = new Bundle();
         args.putInt(POSITION, moviePosition);
         fragment.setArguments(args);

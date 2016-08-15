@@ -22,7 +22,7 @@ import com.example.inspired.inspiredvideo.data.Context;
 import com.example.inspired.inspiredvideo.app.OnItemClickListener;
 import com.example.inspired.inspiredvideo.view.adapter.MovieAdapter;
 
-public class MoviesList extends Fragment  implements AdapterView.OnItemSelectedListener{
+public class MoviesListFragment extends Fragment  implements AdapterView.OnItemSelectedListener{
     private RecyclerView mRecyclerView;
     private LinearLayoutManager mLinearLayoutManager;
     private GridLayoutManager mGridLayoutManager;
@@ -31,12 +31,12 @@ public class MoviesList extends Fragment  implements AdapterView.OnItemSelectedL
     private boolean favouritesEnabled = false;
     private int currentGenre = 0;
 
-    public MoviesList() {
+    public MoviesListFragment() {
         // Required empty public constructor
     }
 
-    public static MoviesList newInstance(String param1) {
-        MoviesList fragment = new MoviesList();
+    public static MoviesListFragment newInstance(String param1) {
+        MoviesListFragment fragment = new MoviesListFragment();
         Bundle args = new Bundle();
 
         args.putString("someInt", param1);
@@ -74,7 +74,7 @@ public class MoviesList extends Fragment  implements AdapterView.OnItemSelectedL
         mMovieAdapter = new MovieAdapter(Context.mCurrentData, new OnItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {
-                MovieItemDetails nextFrag= MovieItemDetails.newInstance(position);
+                MovieItemDetailsFragment nextFrag= MovieItemDetailsFragment.newInstance(position);
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
 
                 transaction.replace(R.id.fragment_container, nextFrag);

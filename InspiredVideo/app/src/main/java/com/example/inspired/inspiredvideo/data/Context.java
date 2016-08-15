@@ -18,14 +18,14 @@ public class Context {
         // 1. The Spinner is on the first option: All.
         if(currentGenreId == 0){
             if(favouritesEnabled){
-                updatemVideoItemsByFavourite();
+                updatemMovieItemsByFavourite();
                 return true;
             }
             Context.mCurrentData = temp;
             return true;
         }
 
-        // The Spinner is with different option than All.
+        // 2. The Spinner is with different option than All.
         if(favouritesEnabled){
             movieItemsByGenre = updateWithFavouriteEnabled(currentGenreId);
         } else {
@@ -35,7 +35,7 @@ public class Context {
         return true;
     }
 
-    private static void updatemVideoItemsByFavourite(){
+    private static void updatemMovieItemsByFavourite(){
         MovieItem movieItem;
         ArrayList<MovieItem> movieItemsByFavourite = new ArrayList<>();
         for (int i = 0; i < Context.mData.size(); i++){

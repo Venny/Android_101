@@ -14,10 +14,10 @@ public class Movie {
     public static final String PARAM_IS_FAVOURITE = "isFavourite";
 
     @SerializedName(PARAM_NAME)
-    public String name;
+    private String name;
 
     @SerializedName(PARAM_DESCRIPTION)
-    public  String description;
+    private  String description;
 
     @SerializedName(PARAM_IMAGE_RES)
     private int imageRes;
@@ -38,5 +38,37 @@ public class Movie {
         this.movieGenreId = movieGenreId;
         this.isFavourite = false;
         this.position = position;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getImageRes() {
+        return imageRes;
+    }
+
+    public int getMovieGenreId() {
+        return movieGenreId;
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
+    public boolean isFavourite() {
+        return isFavourite;
+    }
+
+    public void setFavourite(boolean favourite) {
+        isFavourite = favourite;
     }
 }

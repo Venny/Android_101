@@ -28,9 +28,9 @@ public class MovieContentProvider {
                 DatabaseHelper.COLUMN_ID + " INTEGER PRIMARY KEY, " +
                 COLUMN_NAME + " TEXT, " +
                 COLUMN_DESCRIPTION + " TEXT, " +
-                COLUMN_IMAGE_RES + " TEXT" +
-                COLUMN_MOVIE_GENRE + " TEXT" +
-                COLUMN_POSITION + " INTEGER" +
+                COLUMN_IMAGE_RES + " INTEGER, " +
+                COLUMN_MOVIE_GENRE + " TEXT," +
+                COLUMN_POSITION + " INTEGER," +
                 COLUMN_IS_FAVOURITE + " INTEGER" +
             ");";
 
@@ -94,7 +94,7 @@ public class MovieContentProvider {
         db.close();
     }
 
-    public ArrayList<Movie> getDogs(String nameToSearch) {
+    public ArrayList<Movie> getMovies(String nameToSearch) {
 
         SQLiteDatabase database = open();
 
@@ -103,7 +103,7 @@ public class MovieContentProvider {
                 TABLE_NAME,
 
                 // String array of the columns which are supposed to be read
-                new String[]{COLUMN_NAME, COLUMN_AGE, COLUMN_IMAGE_URL},
+                new String[]{COLUMN_NAME, COLUMN_DESCRIPTION, COLUMN_IMAGE_RES, COLUMN_MOVIE_GENRE, COLUMN_POSITION, COLUMN_IS_FAVOURITE},
 
                 // The selection argument which specifies which row is read.
                 // ? symbols are parameters.
@@ -139,8 +139,11 @@ public class MovieContentProvider {
 
         int idIndex = cursor.getColumnIndex(DatabaseHelper.COLUMN_ID);
         int nameIndex = cursor.getColumnIndex(COLUMN_NAME);
-        int ageIndex = cursor.getColumnIndex(COLUMN_AGE);
-        int imgUrlIndex = cursor.getColumnIndex(COLUMN_IMAGE_URL);
+        int descriptionIndex = cursor.getColumnIndex(COLUMN_DESCRIPTION);
+        int imgResIndex = cursor.getColumnIndex(COLUMN_IMAGE_RES);
+        int imgGenreIndex = cursor.getColumnIndex(COLUMN_MOVIE_GENRE);
+        int imgPositionIndex = cursor.getColumnIndex(COLUMN_POSITION);
+        int favouriteIndex = cursor.getColumnIndex(COLUMN_IS_FAVOURITE);
 
         ArrayList<Movie> movies = new ArrayList<>();
 
@@ -153,10 +156,13 @@ public class MovieContentProvider {
             // Read the values of a row in the table using the indexes acquired above
             long id = cursor.getLong(idIndex);
             String name = cursor.getString(nameIndex);
-            int description = cursor.getInt(ageIndex);
-            String value = cursor.getString(imgUrlIndex);
+            String description = cursor.getString(descriptionIndex);
+            int genre = cursor.getInt(imgGenreIndex);
+            int imageRes = cursor.getInt(imgResIndex);
+            int position = cursor.getInt(imgPositionIndex);
+            int favourite = cursor.getInt(favouriteIndex);
 
-            movies.add(new Movie(name, description, value));
+            movies.add(new Movie(name, description, imageRes, genre, position));
         } while (cursor.moveToNext());
 
         return movies;

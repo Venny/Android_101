@@ -11,13 +11,13 @@ import android.view.ViewGroup;
 
 import com.example.inspired.inspiredvideo.R;
 import com.example.inspired.inspiredvideo.data.Context;
-import com.example.inspired.inspiredvideo.utils.MovieItem;
+import com.example.inspired.inspiredvideo.data.model.Movie;
 import com.example.inspired.inspiredvideo.view.adapter.MovieViewHolder;
 
 public class MovieItemDetailsFragment extends Fragment {
     private static String POSITION;
 
-    private MovieItem mMovieItem;
+    private Movie mMovieItem;
 
     public MovieItemDetailsFragment() {
         // Required empty public constructor
@@ -89,7 +89,7 @@ public class MovieItemDetailsFragment extends Fragment {
         }
     }
 
-    private boolean updateGrid(MovieItem mMovieItem){
+    private boolean updateGrid(Movie mMovieItem){
         mMovieItem.setIsFavourite(true);
         Context.mData.set(mMovieItem.getPosition(), mMovieItem);
         Context.mCurrentData.set(mMovieItem.getCurrentPosition(), mMovieItem);

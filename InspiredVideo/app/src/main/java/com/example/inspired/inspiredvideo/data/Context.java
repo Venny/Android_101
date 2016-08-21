@@ -1,6 +1,6 @@
 package com.example.inspired.inspiredvideo.data;
 
-import com.example.inspired.inspiredvideo.utils.MovieItem;
+import com.example.inspired.inspiredvideo.data.model.Movie;
 
 import java.util.ArrayList;
 
@@ -8,12 +8,12 @@ import java.util.ArrayList;
  * Created by inspired on 01.08.16.
  */
 public class Context {
-    public static ArrayList<MovieItem> mData = new ArrayList<>();
-    public static ArrayList<MovieItem> mCurrentData = new ArrayList<>();
+    public static ArrayList<Movie> mData = new ArrayList<>();
+    public static ArrayList<Movie> mCurrentData = new ArrayList<>();
 
     public static boolean setmVideoItemsByGenre(int currentGenreId, boolean favouritesEnabled){
-        ArrayList<MovieItem> movieItemsByGenre;
-        ArrayList<MovieItem> temp = mData;
+        ArrayList<Movie> movieItemsByGenre;
+        ArrayList<Movie> temp = mData;
 
         // 1. The Spinner is on the first option: All.
         if(currentGenreId == 0){
@@ -36,8 +36,8 @@ public class Context {
     }
 
     private static void updatemMovieItemsByFavourite(){
-        MovieItem movieItem;
-        ArrayList<MovieItem> movieItemsByFavourite = new ArrayList<>();
+        Movie movieItem;
+        ArrayList<Movie> movieItemsByFavourite = new ArrayList<>();
         for (int i = 0; i < Context.mData.size(); i++){
             movieItem = Context.mData.get(i);
             if(movieItem.isFavourite()){
@@ -49,9 +49,9 @@ public class Context {
         Context.mCurrentData = movieItemsByFavourite;
     }
 
-    private static ArrayList<MovieItem> updateWithFavouriteEnabled(int currentGenreId){
-        MovieItem movieItem;
-        ArrayList<MovieItem> data = new ArrayList<>();
+    private static ArrayList<Movie> updateWithFavouriteEnabled(int currentGenreId){
+        Movie movieItem;
+        ArrayList<Movie> data = new ArrayList<>();
 
         for (int i = 0; i < Context.mData.size(); i++){
             movieItem = Context.mData.get(i);
@@ -62,9 +62,9 @@ public class Context {
         }
         return data;
     }
-    private static ArrayList<MovieItem> updateWithoutFavouriteEnabled(int currentGenreId){
-        MovieItem movieItem;
-        ArrayList<MovieItem> data = new ArrayList<>();
+    private static ArrayList<Movie> updateWithoutFavouriteEnabled(int currentGenreId){
+        Movie movieItem;
+        ArrayList<Movie> data = new ArrayList<>();
 
         for (int i = 0; i < Context.mData.size(); i++){
             movieItem = Context.mData.get(i);

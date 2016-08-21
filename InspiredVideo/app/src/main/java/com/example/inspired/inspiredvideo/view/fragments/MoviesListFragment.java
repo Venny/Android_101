@@ -4,9 +4,11 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.MenuItemCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -22,7 +24,7 @@ import com.example.inspired.inspiredvideo.data.Context;
 import com.example.inspired.inspiredvideo.app.OnItemClickListener;
 import com.example.inspired.inspiredvideo.view.adapter.MovieAdapter;
 
-public class MoviesListFragment extends Fragment  implements AdapterView.OnItemSelectedListener{
+public class MoviesListFragment extends Fragment  implements AdapterView.OnItemSelectedListener {
     private RecyclerView mRecyclerView;
     private LinearLayoutManager mLinearLayoutManager;
     private GridLayoutManager mGridLayoutManager;
@@ -48,10 +50,6 @@ public class MoviesListFragment extends Fragment  implements AdapterView.OnItemS
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
-        if (getArguments() != null) {
-//            mName = getArguments().getString(ARG_NAME);
-//            mId = getArguments().getInt(ARG_ID);
-        }
     }
 
     @Override

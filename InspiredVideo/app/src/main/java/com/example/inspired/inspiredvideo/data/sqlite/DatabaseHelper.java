@@ -10,7 +10,7 @@ import com.example.inspired.inspiredvideo.data.model.Movie;
  * Created by inspired on 15.08.16.
  */
 public class DatabaseHelper extends SQLiteOpenHelper {
-    private static final String DATABASE_NAME = "Example.db";
+    private static final String DATABASE_NAME = "Movies.db";
     private static final int DATABASE_VERSION = 1;
 
     // For all Primary Keys _id should be used as column name

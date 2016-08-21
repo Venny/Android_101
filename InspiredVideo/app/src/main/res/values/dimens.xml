@@ -5,4 +5,6 @@
     <dimen name="default_view_padding">8dp</dimen>
     <dimen name="margin_button">5dp</dimen>
     <dimen name="action_button_padding">16dp</dimen>
+    <dimen name="nav_header_height">160dp</dimen>
+    <dimen name="nav_drawer_width">240dp</dimen>
 </resources>

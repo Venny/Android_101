@@ -1,21 +1,32 @@
 package com.example.inspired.inspiredvideo.view.activities;
 
 import android.support.v4.app.FragmentManager;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.widget.ArrayAdapter;
 
 import com.example.inspired.inspiredvideo.R;
 import com.example.inspired.inspiredvideo.data.Context;
+import com.example.inspired.inspiredvideo.data.model.Movie;
+import com.example.inspired.inspiredvideo.data.sqlite.DatabaseHelper;
 import com.example.inspired.inspiredvideo.view.fragments.MoviesListFragment;
-import com.example.inspired.inspiredvideo.utils.MovieItem;
 
-public class MainActivity extends AppCompatActivity  implements FragmentManager.OnBackStackChangedListener{
+public class MainActivity extends AppCompatActivity implements FragmentManager.OnBackStackChangedListener {
+    DatabaseHelper moviesDB;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
+        // Set a toolbar to replace the action bar.
+        Toolbar toolbar = (Toolbar) findViewById(R.id.my_awesome_toolbar);
+        System.out.println(toolbar);
+        setSupportActionBar(toolbar);
 
         if(findViewById(R.id.fragment_container) != null){
             // However, if we're being restored from a previous state,
@@ -26,13 +37,19 @@ public class MainActivity extends AppCompatActivity  implements FragmentManager.
             }
         }
 
+        // DB helper
+        moviesDB = new DatabaseHelper(this);
+       // ArrayList array_list = DatabaseHelper;
+      //  ArrayAdapter arrayAdapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1, array_list);
+
+
         int img1 = R.drawable.lady;
         int img2 = R.drawable.biliard;
-        Context.mData.add(new MovieItem("Ghostbusters", "Following a ghost invasion of Manhattan, paranormal enthusiasts Erin Gilbert and Abby Yates, nuclear engineer Jillian...", img1, 2, Context.mData.size()));
-        Context.mData.add(new MovieItem("Star Trek Beyond", "The USS Enterprise crew explores the furthest reaches of uncharted space, where they ...", img2, 2, Context.mData.size()));
-        Context.mData.add(new MovieItem("The Legend of Tarzan", "Tarzan, having acclimated to life in London, is called back to his former home in the jungle to ...", img1, 3, Context.mData.size()));
-        Context.mData.add(new MovieItem("The Secret Life of Pets", "sfdgrdg", img2, 1, Context.mData.size()));
-        Context.mData.add(new MovieItem("Me Before You", "A girl in a small town forms an unlikely bond with a recently-paralyzed man she's taking care of.\n", img1, 3, Context.mData.size()));
+        Context.mData.add(new Movie("Ghostbusters", "Following a ghost invasion of Manhattan, paranormal enthusiasts Erin Gilbert and Abby Yates, nuclear engineer Jillian...", img1, 2, Context.mData.size()));
+        Context.mData.add(new Movie("Star Trek Beyond", "The USS Enterprise crew explores the furthest reaches of uncharted space, where they ...", img2, 2, Context.mData.size()));
+        Context.mData.add(new Movie("The Legend of Tarzan", "Tarzan, having acclimated to life in London, is called back to his former home in the jungle to ...", img1, 3, Context.mData.size()));
+        Context.mData.add(new Movie("The Secret Life of Pets", "sfdgrdg", img2, 1, Context.mData.size()));
+        Context.mData.add(new Movie("Me Before You", "A girl in a small town forms an unlikely bond with a recently-paralyzed man she's taking care of.\n", img1, 3, Context.mData.size()));
         Context.mCurrentData.addAll(Context.mData);
 
         // Creating dynamically the fragment.
@@ -46,6 +63,17 @@ public class MainActivity extends AppCompatActivity  implements FragmentManager.
         getSupportFragmentManager().beginTransaction()
                                    .add(R.id.fragment_container, firstFragment)
                                    .commit();
+        toolbar = (Toolbar) findViewById(R.id.my_awesome_toolbar);
+        DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(
+                this, /* host Activity */
+                drawerLayout,  /* DrawerLayout object */
+                toolbar,
+                R.string.drawer_open,  /* "open drawer" description */
+                R.string.drawer_close  /* "close drawer" description */
+        );
+        //drawerLayout.addDrawerListener(drawerToggle);
+        //drawerToggle.syncState();
     }
 
     @Override

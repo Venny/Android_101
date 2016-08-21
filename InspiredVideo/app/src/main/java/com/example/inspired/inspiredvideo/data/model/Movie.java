@@ -31,6 +31,8 @@ public class Movie {
     @SerializedName(PARAM_IS_FAVOURITE)
     private boolean isFavourite;
 
+    private int currentPosition;
+
     public Movie(String name, String description, int imageRes, int movieGenreId, int position) {
         this.name = name;
         this.description = description;
@@ -38,6 +40,7 @@ public class Movie {
         this.movieGenreId = movieGenreId;
         this.isFavourite = false;
         this.position = position;
+        this.currentPosition = position;
     }
 
     public String getDescription() {
@@ -70,5 +73,17 @@ public class Movie {
 
     public void setFavourite(boolean favourite) {
         isFavourite = favourite;
+    }
+
+    public void setIsFavourite(boolean isFavourite) {
+        this.isFavourite = isFavourite;
+    }
+
+    public int getCurrentPosition() {
+        return currentPosition;
+    }
+
+    public void setCurrentPosition(int currentPosition) {
+        this.currentPosition = currentPosition;
     }
 }

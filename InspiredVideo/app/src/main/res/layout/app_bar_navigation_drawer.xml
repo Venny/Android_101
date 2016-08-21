@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.NavigationView
+    android:id="@+id/nav_view"
+    android:layout_gravity="start"
+    android:fitsSystemWindows="true"
+    android:layout_width="@dimen/nav_drawer_width"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:headerLayout="@layout/header_nav_drawer"
+    app:menu="@menu/menu_nav_drawer">
+</android.support.design.widget.NavigationView>

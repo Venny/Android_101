@@ -1,30 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.Toolbar android:id="@+id/my_awesome_toolbar"
-    android:minHeight="?attr/actionBarSize"
+<android.support.design.widget.AppBarLayout
     android:layout_width="match_parent"
-    android:layout_height="?attr/actionBarSize"
-    android:background="@color/colorPrimary"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fitsSystemWindows="true"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <ImageButton android:id="@+id/filter_favourite"
-        android:title="@android:string/selectTextMode"
-        android:background="@color/colorTransparent"
-        android:src="@drawable/ic_favorite_border_white_24dp"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:orderInCategory="0" />
+    <android.support.v7.widget.Toolbar android:id="@+id/my_awesome_toolbar"
+        android:minHeight="?attr/actionBarSize"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        app:layout_scrollFlags="scroll|enterAlways"
+        xmlns:android="http://schemas.android.com/apk/res/android"/>
 
- <!--   <ImageButton android:id="@+id/spinner"
-        android:title="@string/spinner"
-        app:actionViewClass="android.widget.Spinner"
-        android:color="@color/colorPureWhite"
-        app:showAsAction="ifRoom"/>-->
-
-    <ImageButton android:id="@+id/toggle_button"
-        android:title="@android:string/selectTextMode"
-        android:src="@drawable/ic_subject_white_24dp"
-        android:background="@color/colorTransparent"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content" />
-
-</android.support.v7.widget.Toolbar>
+</android.support.design.widget.AppBarLayout>

@@ -25,7 +25,6 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
         setContentView(R.layout.main_activity);
         // Set a toolbar to replace the action bar.
         Toolbar toolbar = (Toolbar) findViewById(R.id.my_awesome_toolbar);
-        System.out.println(toolbar);
         setSupportActionBar(toolbar);
 
         if(findViewById(R.id.fragment_container) != null){
@@ -63,7 +62,6 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
         getSupportFragmentManager().beginTransaction()
                                    .add(R.id.fragment_container, firstFragment)
                                    .commit();
-        toolbar = (Toolbar) findViewById(R.id.my_awesome_toolbar);
         DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(
                 this, /* host Activity */
@@ -72,8 +70,10 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
                 R.string.drawer_open,  /* "open drawer" description */
                 R.string.drawer_close  /* "close drawer" description */
         );
-        //drawerLayout.addDrawerListener(drawerToggle);
-        //drawerToggle.syncState();
+        System.out.println(drawerLayout);
+
+        drawerLayout.addDrawerListener(drawerToggle);
+        drawerToggle.syncState();
     }
 
     @Override

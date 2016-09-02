@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.widget.ArrayAdapter;
 
 import com.example.inspired.inspiredvideo.R;
 import com.example.inspired.inspiredvideo.data.Context;
@@ -37,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
         }
 
         // DB helper
-        moviesDB = new DatabaseHelper(this);
+        //moviesDB = new DatabaseHelper(this);
        // ArrayList array_list = DatabaseHelper;
       //  ArrayAdapter arrayAdapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1, array_list);
 

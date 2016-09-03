@@ -6,16 +6,27 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 
 import com.example.inspired.inspiredvideo.R;
 import com.example.inspired.inspiredvideo.data.Context;
-import com.example.inspired.inspiredvideo.data.model.Movie;
+import com.example.inspired.inspiredvideo.model.Movie;
 import com.example.inspired.inspiredvideo.data.sqlite.DatabaseHelper;
+import com.example.inspired.inspiredvideo.model.MoviesResponse;
+import com.example.inspired.inspiredvideo.rest.ApiClient;
+import com.example.inspired.inspiredvideo.rest.ApiInterface;
 import com.example.inspired.inspiredvideo.view.fragments.MoviesListFragment;
 
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class MainActivity extends AppCompatActivity implements FragmentManager.OnBackStackChangedListener {
+    private static final String TAG = MainActivity.class.getSimpleName();
     DatabaseHelper moviesDB;
 
     @Override
@@ -36,19 +47,37 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
         }
 
         // DB helper
-        //moviesDB = new DatabaseHelper(this);
-       // ArrayList array_list = DatabaseHelper;
-      //  ArrayAdapter arrayAdapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1, array_list);
+        // moviesDB = new DatabaseHelper(this);
+        // ArrayList array_list = DatabaseHelper;
+        // ArrayAdapter arrayAdapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1, array_list);
 
 
         int img1 = R.drawable.lady;
         int img2 = R.drawable.biliard;
-        Context.mData.add(new Movie("Ghostbusters", "Following a ghost invasion of Manhattan, paranormal enthusiasts Erin Gilbert and Abby Yates, nuclear engineer Jillian...", img1, 2, Context.mData.size()));
+       /* Context.mData.add(new Movie("Ghostbusters", "Following a ghost invasion of Manhattan, paranormal enthusiasts Erin Gilbert and Abby Yates, nuclear engineer Jillian...", img1, 2, Context.mData.size()));
         Context.mData.add(new Movie("Star Trek Beyond", "The USS Enterprise crew explores the furthest reaches of uncharted space, where they ...", img2, 2, Context.mData.size()));
         Context.mData.add(new Movie("The Legend of Tarzan", "Tarzan, having acclimated to life in London, is called back to his former home in the jungle to ...", img1, 3, Context.mData.size()));
         Context.mData.add(new Movie("The Secret Life of Pets", "sfdgrdg", img2, 1, Context.mData.size()));
         Context.mData.add(new Movie("Me Before You", "A girl in a small town forms an unlikely bond with a recently-paralyzed man she's taking care of.\n", img1, 3, Context.mData.size()));
-        Context.mCurrentData.addAll(Context.mData);
+        Context.mCurrentData.addAll(Context.mData);*/
+
+        ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
+
+        Call<MoviesResponse> call = apiService.getMovies();
+        call.enqueue(new Callback<MoviesResponse>() {
+            @Override
+            public void onResponse(Call<MoviesResponse> call, Response<MoviesResponse> response) {
+                List<Movie> movies = response.body().getResults();
+                Log.d(TAG, "Numbers of movies received: " + movies.size());
+            }
+
+            @Override
+            public void onFailure(Call<MoviesResponse> call, Throwable t) {
+                // If request fails log the error.
+                Log.e(TAG, t.toString());
+            }
+        });
+
 
         // Creating dynamically the fragment.
         MoviesListFragment firstFragment = MoviesListFragment.newInstance("");

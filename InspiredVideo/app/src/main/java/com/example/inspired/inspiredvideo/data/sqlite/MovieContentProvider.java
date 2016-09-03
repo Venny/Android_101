@@ -5,7 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.inspired.inspiredvideo.data.model.Movie;
+import com.example.inspired.inspiredvideo.model.Movie;
 
 import java.util.ArrayList;
 
@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class MovieContentProvider {
     private static final String TABLE_NAME = Movie.class.getName();
 
-    public static final String COLUMN_NAME = Movie.PARAM_NAME;
+    public static final String COLUMN_NAME = Movie.PARAM_TITLE;
     public static final String COLUMN_DESCRIPTION = Movie.PARAM_DESCRIPTION;
     public static final String COLUMN_IMAGE_RES = Movie.PARAM_IMAGE_RES;
     public static final String COLUMN_MOVIE_GENRE = Movie.PARAM_MOVIE_GENRE;
@@ -59,10 +59,10 @@ public class MovieContentProvider {
 
     private ContentValues writeItemInDB(SQLiteDatabase database, Movie movie){
         final ContentValues values = new ContentValues();
-        values.put(COLUMN_NAME, movie.getName());
+        values.put(COLUMN_NAME, movie.getTitle());
         values.put(COLUMN_DESCRIPTION, movie.getDescription());
         values.put(COLUMN_IMAGE_RES, movie.getImageRes());
-        values.put(COLUMN_MOVIE_GENRE, movie.getMovieGenreId());
+        values.put(COLUMN_MOVIE_GENRE, movie.getType());
         values.put(COLUMN_POSITION, movie.getPosition());
         values.put(COLUMN_IS_FAVOURITE, movie.isFavourite());
 

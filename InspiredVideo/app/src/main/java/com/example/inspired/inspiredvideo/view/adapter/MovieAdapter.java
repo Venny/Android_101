@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 
 import com.example.inspired.inspiredvideo.R;
 import com.example.inspired.inspiredvideo.app.OnItemClickListener;
-import com.example.inspired.inspiredvideo.data.model.Movie;
+import com.example.inspired.inspiredvideo.model.Movie;
 
 import java.util.ArrayList;
 
@@ -35,7 +35,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieViewHolder>{
     public void onBindViewHolder(MovieViewHolder holder, final int position) {
         Movie movieItem = mMovieItems.get(position);
         holder.getmImageView().setImageResource(movieItem.getImageRes());
-        holder.getmNameView().setText(movieItem.getName());
+        holder.getmNameView().setText(movieItem.getTitle());
         holder.getmTextDescription().setText(movieItem.getDescription());
 
         // Adding click event for every video item.

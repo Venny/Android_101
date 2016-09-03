@@ -1,4 +1,4 @@
-package com.example.inspired.inspiredvideo.data.model;
+package com.example.inspired.inspiredvideo.model;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -6,24 +6,34 @@ import com.google.gson.annotations.SerializedName;
  * Created by inspired on 15.08.16.
  */
 public class Movie {
-    public static final String PARAM_NAME = "image";
+    public static final String PARAM_TITLE = "title";
+    public static final String PARAM_YEAR = "year";
+    public static final String PARAM_MOVIE_GENRE = "type";
+    public static final String PARAM_POSTER_PATH = "poster";
     public static final String PARAM_DESCRIPTION = "description";
     public static final String PARAM_IMAGE_RES = "imageRes";
-    public static final String PARAM_MOVIE_GENRE = "movieGenreId";
     public static final String PARAM_POSITION = "position";
     public static final String PARAM_IS_FAVOURITE = "isFavourite";
 
-    @SerializedName(PARAM_NAME)
-    private String name;
+    @SerializedName(PARAM_TITLE)
+    private String title;
+
+    @SerializedName(PARAM_YEAR)
+    private String year;
+
+    @SerializedName(PARAM_POSTER_PATH)
+    private String poster;
+
+    @SerializedName(PARAM_MOVIE_GENRE)
+    private int type;
+
+
 
     @SerializedName(PARAM_DESCRIPTION)
     private  String description;
 
     @SerializedName(PARAM_IMAGE_RES)
     private int imageRes;
-
-    @SerializedName(PARAM_MOVIE_GENRE)
-    private int movieGenreId;
 
     @SerializedName(PARAM_POSITION)
     private int position;
@@ -33,14 +43,22 @@ public class Movie {
 
     private int currentPosition;
 
-    public Movie(String name, String description, int imageRes, int movieGenreId, int position) {
-        this.name = name;
+    public Movie(String title, String description, int imageRes, int movieGenreId, int position) {
+        this.title = title;
+        this.type = movieGenreId;
+
         this.description = description;
         this.imageRes = imageRes;
-        this.movieGenreId = movieGenreId;
         this.isFavourite = false;
         this.position = position;
         this.currentPosition = position;
+    }
+
+    public Movie(String title, String year, String poster,int movieGenreId) {
+        this.title = title;
+        this.year = year;
+        this.poster = poster;
+        this.type = movieGenreId;
     }
 
     public String getDescription() {
@@ -51,16 +69,16 @@ public class Movie {
         this.description = description;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
     public int getImageRes() {
         return imageRes;
     }
 
-    public int getMovieGenreId() {
-        return movieGenreId;
+    public int getType() {
+        return type;
     }
 
     public int getPosition() {
@@ -85,5 +103,21 @@ public class Movie {
 
     public void setCurrentPosition(int currentPosition) {
         this.currentPosition = currentPosition;
+    }
+
+    public String getPoster() {
+        return poster;
+    }
+
+    public void setPoster(String posterPath) {
+        this.poster = posterPath;
+    }
+
+    public String getYear() {
+        return year;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
     }
 }

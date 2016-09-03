@@ -4,8 +4,6 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.example.inspired.inspiredvideo.data.model.Movie;
-
 /**
  * Created by inspired on 15.08.16.
  */

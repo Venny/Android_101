@@ -10,13 +10,13 @@
     android:background="@color/colorLightYellow"
     tools:context=".view.activities.MainActivity">
 
-    <fragment android:name="com.example.inspired.inspiredvideo.view.fragments.MoviesListFragment"
+    <fragment android:title="com.example.inspired.inspiredvideo.view.fragments.MoviesListFragment"
         android:id="@+id/headlines_fragment_tablet"
         android:layout_weight="1"
         android:layout_width="0dp"
         android:layout_height="match_parent" />
 
-    <fragment android:name="com.example.inspired.inspiredvideo.view.fragments.MovieItemDetailsFragment"
+    <fragment android:title="com.example.inspired.inspiredvideo.view.fragments.MovieItemDetailsFragment"
         android:id="@+id/article_fragment_tablet"
         android:layout_weight="2"
         android:layout_width="0dp"

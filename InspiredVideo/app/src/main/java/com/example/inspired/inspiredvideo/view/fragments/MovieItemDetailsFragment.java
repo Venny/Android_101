@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 
 import com.example.inspired.inspiredvideo.R;
 import com.example.inspired.inspiredvideo.data.Context;
-import com.example.inspired.inspiredvideo.data.model.Movie;
+import com.example.inspired.inspiredvideo.model.Movie;
 import com.example.inspired.inspiredvideo.view.adapter.MovieViewHolder;
 
 public class MovieItemDetailsFragment extends Fragment {
@@ -49,7 +49,7 @@ public class MovieItemDetailsFragment extends Fragment {
         MovieViewHolder movieViewHolder = new MovieViewHolder(view);
 
         movieViewHolder.getmImageView().setImageResource(mMovieItem.getImageRes());
-        movieViewHolder.getmNameView().setText(mMovieItem.getName());
+        movieViewHolder.getmNameView().setText(mMovieItem.getTitle());
         movieViewHolder.getmTextDescription().setText(mMovieItem.getDescription());
         return view;
     }

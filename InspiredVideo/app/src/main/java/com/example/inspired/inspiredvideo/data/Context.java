@@ -1,6 +1,6 @@
 package com.example.inspired.inspiredvideo.data;
 
-import com.example.inspired.inspiredvideo.data.model.Movie;
+import com.example.inspired.inspiredvideo.model.Movie;
 
 import java.util.ArrayList;
 
@@ -55,7 +55,7 @@ public class Context {
 
         for (int i = 0; i < Context.mData.size(); i++){
             movieItem = Context.mData.get(i);
-            if(movieItem.getMovieGenreId() == currentGenreId && movieItem.isFavourite()){
+            if(movieItem.getType() == currentGenreId && movieItem.isFavourite()){
                 movieItem.setCurrentPosition(data.size());
                 data.add(movieItem);
             }
@@ -68,7 +68,7 @@ public class Context {
 
         for (int i = 0; i < Context.mData.size(); i++){
             movieItem = Context.mData.get(i);
-            if(movieItem.getMovieGenreId() == currentGenreId){
+            if(movieItem.getType() == currentGenreId){
                 movieItem.setCurrentPosition(data.size());
                 data.add(movieItem);
             }

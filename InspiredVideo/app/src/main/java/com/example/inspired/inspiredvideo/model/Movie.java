@@ -7,9 +7,7 @@ import com.google.gson.annotations.SerializedName;
  */
 public class Movie {
     public static final String PARAM_TITLE = "title";
-    public static final String PARAM_YEAR = "year";
     public static final String PARAM_MOVIE_GENRE = "type";
-    public static final String PARAM_POSTER_PATH = "poster";
     public static final String PARAM_DESCRIPTION = "description";
     public static final String PARAM_IMAGE_RES = "imageRes";
     public static final String PARAM_POSITION = "position";
@@ -17,12 +15,6 @@ public class Movie {
 
     @SerializedName(PARAM_TITLE)
     private String title;
-
-    @SerializedName(PARAM_YEAR)
-    private String year;
-
-    @SerializedName(PARAM_POSTER_PATH)
-    private String poster;
 
     @SerializedName(PARAM_MOVIE_GENRE)
     private int type;
@@ -52,13 +44,6 @@ public class Movie {
         this.isFavourite = false;
         this.position = position;
         this.currentPosition = position;
-    }
-
-    public Movie(String title, String year, String poster,int movieGenreId) {
-        this.title = title;
-        this.year = year;
-        this.poster = poster;
-        this.type = movieGenreId;
     }
 
     public String getDescription() {
@@ -105,19 +90,4 @@ public class Movie {
         this.currentPosition = currentPosition;
     }
 
-    public String getPoster() {
-        return poster;
-    }
-
-    public void setPoster(String posterPath) {
-        this.poster = posterPath;
-    }
-
-    public String getYear() {
-        return year;
-    }
-
-    public void setYear(String year) {
-        this.year = year;
-    }
 }

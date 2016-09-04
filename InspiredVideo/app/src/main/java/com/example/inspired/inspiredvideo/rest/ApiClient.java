@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by inspired on 03.09.16.
  */
 public class ApiClient {
-    public static final String BASE_URL = "http://www.omdbapi.com/?s=Batman";
+    public static final String BASE_URL = "http://www.omdbapi.com/";
     private static Retrofit retrofit = null;
 
     public static Retrofit getClient(){

@@ -1,5 +1,6 @@
 package com.example.inspired.inspiredvideo.view.fragments;
 
+import android.graphics.Movie;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -9,6 +10,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -22,9 +24,21 @@ import android.widget.Spinner;
 import com.example.inspired.inspiredvideo.R;
 import com.example.inspired.inspiredvideo.data.Context;
 import com.example.inspired.inspiredvideo.app.OnItemClickListener;
+import com.example.inspired.inspiredvideo.model.Movie2;
+import com.example.inspired.inspiredvideo.model.MoviesResponse;
+import com.example.inspired.inspiredvideo.rest.ApiClient;
+import com.example.inspired.inspiredvideo.rest.ApiInterface;
 import com.example.inspired.inspiredvideo.view.adapter.MovieAdapter;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class MoviesListFragment extends Fragment  implements AdapterView.OnItemSelectedListener {
+    private static final String TAG = MoviesListFragment.class.getSimpleName();;
     private RecyclerView mRecyclerView;
     private LinearLayoutManager mLinearLayoutManager;
     private GridLayoutManager mGridLayoutManager;
@@ -32,6 +46,7 @@ public class MoviesListFragment extends Fragment  implements AdapterView.OnItemS
     private MovieAdapter mMovieAdapter;
     private boolean favouritesEnabled = false;
     private int currentGenre = 0;
+    private ArrayList<Movie2> movies = new ArrayList<>();
 
     public MoviesListFragment() {
         // Required empty public constructor
@@ -68,20 +83,38 @@ public class MoviesListFragment extends Fragment  implements AdapterView.OnItemS
         mLinearLayoutManager = new LinearLayoutManager(inflater.getContext());
         mRecyclerView.setLayoutManager(mLinearLayoutManager);
 
-        // Specifying the Adapter.
-        mMovieAdapter = new MovieAdapter(Context.mCurrentData, new OnItemClickListener() {
-            @Override
-            public void onItemClick(View v, int position) {
-                MovieItemDetailsFragment nextFrag= MovieItemDetailsFragment.newInstance(position);
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        // Get the movie items via GET request
+        ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
 
-                transaction.replace(R.id.fragment_container, nextFrag);
-                transaction.addToBackStack(null);
-                transaction.commit();
+        Call<MoviesResponse> call = apiService.getMovies();
+        call.enqueue(new Callback<MoviesResponse>() {
+            @Override
+            public void onResponse(Call<MoviesResponse> call, Response<MoviesResponse> response) {
+                movies = (ArrayList<Movie2>) response.body().getResults();
+
+                // Specifying the Adapter.
+                mMovieAdapter = new MovieAdapter(movies, new OnItemClickListener() {
+                    @Override
+                    public void onItemClick(View v, int position) {
+                        MovieItemDetailsFragment nextFrag= MovieItemDetailsFragment.newInstance(position);
+                        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+                        transaction.replace(R.id.fragment_container, nextFrag);
+                        transaction.addToBackStack(null);
+                        transaction.commit();
+                    }
+                });
+
+                mRecyclerView.setAdapter(mMovieAdapter);
+            }
+
+            @Override
+            public void onFailure(Call<MoviesResponse> call, Throwable t) {
+                // If request fails log the error.
+                Log.e(TAG, t.toString());
             }
         });
 
-        mRecyclerView.setAdapter(mMovieAdapter);
         return myLayoutView;
     }
 
@@ -117,13 +150,13 @@ public class MoviesListFragment extends Fragment  implements AdapterView.OnItemS
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         currentGenre = position;
         Context.setmVideoItemsByGenre(currentGenre, favouritesEnabled);
-        mMovieAdapter.updatemVideoItems(Context.mCurrentData);
+        //mMovieAdapter.updatemVideoItems(Context.mCurrentData);
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
         currentGenre = 0;
-        mMovieAdapter.updatemVideoItems(Context.mCurrentData);
+        //mMovieAdapter.updatemVideoItems(Context.mCurrentData);
     }
 
     private void onClickToggleButton(){
@@ -146,6 +179,6 @@ public class MoviesListFragment extends Fragment  implements AdapterView.OnItemS
             Context.setmVideoItemsByGenre(currentGenre, favouritesEnabled);
             item.setIcon(R.drawable.ic_favorite_white_24dp);
         }
-        mMovieAdapter.updatemVideoItems(Context.mCurrentData);
+        //mMovieAdapter.updatemVideoItems(Context.mCurrentData);
     }
 }

@@ -11,14 +11,14 @@ import android.view.Menu;
 import android.view.MenuInflater;
 
 import com.example.inspired.inspiredvideo.R;
-import com.example.inspired.inspiredvideo.data.Context;
-import com.example.inspired.inspiredvideo.model.Movie;
 import com.example.inspired.inspiredvideo.data.sqlite.DatabaseHelper;
+import com.example.inspired.inspiredvideo.model.Movie2;
 import com.example.inspired.inspiredvideo.model.MoviesResponse;
 import com.example.inspired.inspiredvideo.rest.ApiClient;
 import com.example.inspired.inspiredvideo.rest.ApiInterface;
 import com.example.inspired.inspiredvideo.view.fragments.MoviesListFragment;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -27,7 +27,9 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity implements FragmentManager.OnBackStackChangedListener {
     private static final String TAG = MainActivity.class.getSimpleName();
-    DatabaseHelper moviesDB;
+
+    private List<Movie2> movies = new ArrayList<Movie2>();
+    private DatabaseHelper moviesDB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,24 +63,6 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
         Context.mData.add(new Movie("Me Before You", "A girl in a small town forms an unlikely bond with a recently-paralyzed man she's taking care of.\n", img1, 3, Context.mData.size()));
         Context.mCurrentData.addAll(Context.mData);*/
 
-        ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-
-        Call<MoviesResponse> call = apiService.getMovies();
-        call.enqueue(new Callback<MoviesResponse>() {
-            @Override
-            public void onResponse(Call<MoviesResponse> call, Response<MoviesResponse> response) {
-                List<Movie> movies = response.body().getResults();
-                Log.d(TAG, "Numbers of movies received: " + movies.size());
-            }
-
-            @Override
-            public void onFailure(Call<MoviesResponse> call, Throwable t) {
-                // If request fails log the error.
-                Log.e(TAG, t.toString());
-            }
-        });
-
-
         // Creating dynamically the fragment.
         MoviesListFragment firstFragment = MoviesListFragment.newInstance("");
 
@@ -98,7 +82,6 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
                 R.string.drawer_open,  /* "open drawer" description */
                 R.string.drawer_close  /* "close drawer" description */
         );
-        System.out.println(drawerLayout);
 
         drawerLayout.addDrawerListener(drawerToggle);
         drawerToggle.syncState();

@@ -2,6 +2,7 @@ package com.example.inspired.inspiredvideo.view.adapter;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,8 +13,10 @@ import com.example.inspired.inspiredvideo.R;
 import com.example.inspired.inspiredvideo.app.OnItemClickListener;
 import com.example.inspired.inspiredvideo.model.Movie;
 import com.example.inspired.inspiredvideo.model.Movie2;
+import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -41,18 +44,8 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieViewHolder>{
     @Override
     public void onBindViewHolder(MovieViewHolder holder, final int position) {
         Movie2 movieItem = mMovieItems.get(position);
-        URL newurl = null;
-        Bitmap imageValue = null;
-        try {
-            newurl = new URL(movieItem.getPoster());
-            //imageValue = BitmapFactory.decodeStream(newurl.openConnection().getInputStream());
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
-       // holder.getmImageView().setImageBitmap(imageValue);
+        Picasso.with(holder.getmImageView().getContext()).load(movieItem.getPoster()).into(holder.getmImageView());
         holder.getmNameView().setText(movieItem.getTitle());
         holder.getmTextDescription().setText(movieItem.getImdbID());
 

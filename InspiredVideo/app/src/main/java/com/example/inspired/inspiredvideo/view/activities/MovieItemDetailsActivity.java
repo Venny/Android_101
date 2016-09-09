@@ -12,6 +12,7 @@ import android.view.View;
 import com.example.inspired.inspiredvideo.R;
 import com.example.inspired.inspiredvideo.model.Movie2;
 import com.example.inspired.inspiredvideo.view.adapter.MovieViewHolder;
+import com.squareup.picasso.Picasso;
 
 /**
  * Created by inspired on 08.09.16.
@@ -30,9 +31,9 @@ public class MovieItemDetailsActivity extends AppCompatActivity {
         View view = this.getWindow().getDecorView().findViewById(android.R.id.content);
         MovieViewHolder mVideoHolder = new MovieViewHolder(view);
 
-       /* mVideoHolder.getmImageView().setImageResource(mMovieItem.getImageRes());
-        mVideoHolder.getmNameView().setText(mMovieItem.getName());
-        mVideoHolder.getmTextDescription().setText(mMovieItem.getDescription());*/
+        Picasso.with(mVideoHolder.getmImageView().getContext()).load(mMovieItem.getPoster()).into(mVideoHolder.getmImageView());
+        mVideoHolder.getmNameView().setText(mMovieItem.getTitle());
+        mVideoHolder.getmTextDescription().setText(mMovieItem.getImdbID());
     }
 
     @Override

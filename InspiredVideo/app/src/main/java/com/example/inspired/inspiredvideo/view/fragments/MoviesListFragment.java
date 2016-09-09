@@ -1,5 +1,6 @@
 package com.example.inspired.inspiredvideo.view.fragments;
 
+import android.content.Intent;
 import android.graphics.Movie;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -28,6 +29,8 @@ import com.example.inspired.inspiredvideo.model.Movie2;
 import com.example.inspired.inspiredvideo.model.MoviesResponse;
 import com.example.inspired.inspiredvideo.rest.ApiClient;
 import com.example.inspired.inspiredvideo.rest.ApiInterface;
+import com.example.inspired.inspiredvideo.view.activities.MainActivity;
+import com.example.inspired.inspiredvideo.view.activities.MovieItemDetailsActivity;
 import com.example.inspired.inspiredvideo.view.adapter.MovieAdapter;
 
 import java.util.ArrayList;
@@ -38,7 +41,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MoviesListFragment extends Fragment  implements AdapterView.OnItemSelectedListener {
-    private static final String TAG = MoviesListFragment.class.getSimpleName();;
+    private static final String TAG = MoviesListFragment.class.getSimpleName();
     private RecyclerView mRecyclerView;
     private LinearLayoutManager mLinearLayoutManager;
     private GridLayoutManager mGridLayoutManager;
@@ -96,12 +99,17 @@ public class MoviesListFragment extends Fragment  implements AdapterView.OnItemS
                 mMovieAdapter = new MovieAdapter(movies, new OnItemClickListener() {
                     @Override
                     public void onItemClick(View v, int position) {
-                        MovieItemDetailsFragment nextFrag= MovieItemDetailsFragment.newInstance(position);
+                        /*MovieItemDetailsFragment nextFrag= MovieItemDetailsFragment.newInstance(position);
                         FragmentTransaction transaction = getFragmentManager().beginTransaction();
 
                         transaction.replace(R.id.fragment_container, nextFrag);
                         transaction.addToBackStack(null);
-                        transaction.commit();
+                        transaction.commit();*/
+
+                        Intent myIntent = new Intent(getActivity(), MovieItemDetailsActivity.class);
+                        Movie2 movieItem = movies.get(position);
+                        myIntent.putExtra("item", movieItem);
+                        getActivity().startActivity(myIntent);
                     }
                 });
 

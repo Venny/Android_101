@@ -2,10 +2,12 @@ package com.example.inspired.inspiredvideo.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 /**
  * Created by inspired on 04.09.16.
  */
-public class Movie2 {
+public class Movie2 implements Serializable {
     public static final String PARAM_TITLE = "Title";
     public static final String PARAM_YEAR = "Year";
     public static final String PARAM_IMDID = "imdbID";

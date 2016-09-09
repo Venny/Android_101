@@ -13,4 +13,7 @@ import retrofit2.http.Query;
 public interface ApiInterface {
     @GET("?s=Batman&page=2")
     Call<MoviesResponse> getMovies();
+
+    @GET("?i={id}")
+    Call<MoviesResponse> getMovieDetails(@Path("id") int id);
 }

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/home/inspired/Projects/Android101/SImpleForm/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
+        <dex dex="/home/inspired/Projects/Android101/SImpleForm/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_1fc32b079da70a192ce2fe47d3b920e2910cd327/classes.dex" />
+    </item>
+    <item
+        jar="/home/inspired/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/24.2.1/support-annotations-24.2.1.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="8de3aafecbdf98a61db6427f008f2d515bcd2544">
+        <dex dex="/home/inspired/Projects/Android101/SImpleForm/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-24.2.1_b50f2e7ba9d73fa5ab5fd8345029dc03df3e2c27/classes.dex" />
+    </item>
+    <item
+        jar="/home/inspired/Projects/Android101/SImpleForm/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
+        <dex dex="/home/inspired/Projects/Android101/SImpleForm/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-24.2.1_e79477bebc368c494ae15b864352036ad6fd39b5/classes.dex" />
+    </item>
+    <item
+        jar="/home/inspired/Projects/Android101/SImpleForm/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="fbf8da429efd5ad21e02e3e5ecaa1efc4167878d">
+        <dex dex="/home/inspired/Projects/Android101/SImpleForm/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_cd94402b862114871d17305f3d2f3e3e817dae51/classes.dex" />
+    </item>
+    <item
+        jar="/home/inspired/Projects/Android101/SImpleForm/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
+        <dex dex="/home/inspired/Projects/Android101/SImpleForm/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-fragment-24.2.1_b774e29a3955397a7d2d400ad52679af397faa03/classes.dex" />
+    </item>
+    <item
+        jar="/home/inspired/Projects/Android101/SImpleForm/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
+        <dex dex="/home/inspired/Projects/Android101/SImpleForm/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-utils-24.2.1_42ff1cad9d1983ba173e480a29a45d6faaeacc2e/classes.dex" />
+    </item>
+    <item
+        jar="/home/inspired/Projects/Android101/SImpleForm/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
+        <dex dex="/home/inspired/Projects/Android101/SImpleForm/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_7f2dd3ef3f6dabd1f55aca0b5dfdb298e387ff61/classes.dex" />
+    </item>
+    <item
+        jar="/home/inspired/Projects/Android101/SImpleForm/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
+        <dex dex="/home/inspired/Projects/Android101/SImpleForm/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_1206876058b0bf8964767c2cc60f322be8b842e6/classes.dex" />
+    </item>
+    <item
+        jar="/home/inspired/Projects/Android101/SImpleForm/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="43b2dba6b5a0b14527961b75329d0b90025f15ea">
+        <dex dex="/home/inspired/Projects/Android101/SImpleForm/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-24.2.1_8dcc414130fff027d93ca8bc5143466468ede3f2/classes.dex" />
+    </item>
+    <item
+        jar="/home/inspired/Projects/Android101/SImpleForm/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="d5c731fc64c03dfe04d51134955b483551c35849">
+        <dex dex="/home/inspired/Projects/Android101/SImpleForm/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-24.2.1_c1ab9bf34cffd8eaf4ae66c5c0f8eb26133f285a/classes.dex" />
+    </item>
+    <item
+        jar="/home/inspired/Projects/Android101/SImpleForm/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="2c29442b378276ddbc9b9bff14ea42d687d1e6cc">
+        <dex dex="/home/inspired/Projects/Android101/SImpleForm/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_8e04bdc60623d82dfb7e474a20877a95f8f3ca19/classes.dex" />
+    </item>
+    <item
+        jar="/home/inspired/Projects/Android101/SImpleForm/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="867dad63c33388ff8c7644b236579355036d075f">
+        <dex dex="/home/inspired/Projects/Android101/SImpleForm/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_77cc36b2c0f10069135ea56cb0b61b28a90e59b0/classes.dex" />
+    </item>
+    <item
+        jar="/home/inspired/Projects/Android101/SImpleForm/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
+        <dex dex="/home/inspired/Projects/Android101/SImpleForm/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-compat-24.2.1_4cbd7adb0c33d404ecf4631d93aa13f5cf745f51/classes.dex" />
+    </item>
+    <item
+        jar="/home/inspired/Projects/Android101/SImpleForm/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
+        <dex dex="/home/inspired/Projects/Android101/SImpleForm/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-media-compat-24.2.1_271b098e6cc27244a57c6321df0f9316c30cd6d5/classes.dex" />
+    </item>
+    <item
+        jar="/home/inspired/Projects/Android101/SImpleForm/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="1f8e1bf259980f7455ee74094358b7978f97e2b6">
+        <dex dex="/home/inspired/Projects/Android101/SImpleForm/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_7829d731fda2e1aba9d3e4a416835b7088983bcd/classes.dex" />
+    </item>
+    <item
+        jar="/home/inspired/Projects/Android101/SImpleForm/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/home/inspired/Projects/Android101/SImpleForm/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-24.2.1_4db66aa29c4cf1b5fc04f3c7139e12c4b8b8bc4e/classes.dex" />
+    </item>
+    <item
+        jar="/home/inspired/Projects/Android101/SImpleForm/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="e7f3132168957eefc46229fc32c3bd464642b71e">
+        <dex dex="/home/inspired/Projects/Android101/SImpleForm/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-ui-24.2.1_5cf1b7a8859ce10fe5bdf44837af69b8756f878d/classes.dex" />
+    </item>
+
+</items>

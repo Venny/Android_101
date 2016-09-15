@@ -6,24 +6,16 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 
 import com.example.inspired.inspiredvideo.R;
 import com.example.inspired.inspiredvideo.data.sqlite.DatabaseHelper;
 import com.example.inspired.inspiredvideo.model.Movie2;
-import com.example.inspired.inspiredvideo.model.MoviesResponse;
-import com.example.inspired.inspiredvideo.rest.ApiClient;
-import com.example.inspired.inspiredvideo.rest.ApiInterface;
 import com.example.inspired.inspiredvideo.view.fragments.MoviesListFragment;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity implements FragmentManager.OnBackStackChangedListener {
     private static final String TAG = MainActivity.class.getSimpleName();
@@ -36,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
         // Set a toolbar to replace the action bar.
-        Toolbar toolbar = (Toolbar) findViewById(R.id.my_awesome_toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.inspired_toolbar);
         setSupportActionBar(toolbar);
 
         if(findViewById(R.id.fragment_container) != null){

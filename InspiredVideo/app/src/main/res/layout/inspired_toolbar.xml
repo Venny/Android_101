@@ -3,17 +3,24 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:fitsSystemWindows="true"
     android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <android.support.v7.widget.Toolbar android:id="@+id/my_awesome_toolbar"
+    <android.support.v7.widget.Toolbar android:id="@+id/inspired_toolbar"
         android:minHeight="?attr/actionBarSize"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:theme="@android:style/"
         android:background="@color/colorPrimary"
         app:layout_scrollFlags="scroll|enterAlways"
         xmlns:android="http://schemas.android.com/apk/res/android"/>
+
+    <android.support.design.widget.TabLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tabs"
+        android:background="@color/colorPrimaryDark"
+        android:layout_below="@id/inspired_toolbar"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 </android.support.design.widget.AppBarLayout>

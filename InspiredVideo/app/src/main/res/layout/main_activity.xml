@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:background="@color/colorLightYellow"
         tools:context=".view.activities.MainActivity"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
         <!--Main Content-->
         <include layout="@layout/inspired_toolbar"
@@ -23,8 +23,7 @@
             android:id="@+id/fragment_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@id/my_awesome_toolbar"
-            android:layout_alignEnd="@id/my_awesome_toolbar" />
+            android:layout_alignEnd="@id/inspired_toolbar" />
     </RelativeLayout>
 
     <android.support.design.widget.NavigationView

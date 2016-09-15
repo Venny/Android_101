@@ -17,6 +17,9 @@
 
     <style name="AppTheme.ActionBar" parent="AppTheme">
         <item name="windowActionBarOverlay">false</item>
-        <item name="colorPrimary">@color/colorPrimary</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="windowActionBarOverlay">false</item>
     </style>
 </resources>

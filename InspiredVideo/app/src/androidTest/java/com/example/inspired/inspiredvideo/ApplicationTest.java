@@ -1,13 +1,21 @@
 package com.example.inspired.inspiredvideo;
 
-import android.app.Application;
-import android.test.ApplicationTestCase;
+import android.content.Context;
+import android.support.test.InstrumentationRegistry;
+import android.support.test.runner.AndroidJUnit4;
 
-/**
- * <a href="http://d.android.com/tools/testing/testing_android.html">Testing Fundamentals</a>
- */
-public class ApplicationTest extends ApplicationTestCase<Application> {
-    public ApplicationTest() {
-        super(Application.class);
+import junit.framework.Assert;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+
+@RunWith(  AndroidJUnit4.class)
+class ExampleInstrumentedTest {
+    @Test
+    public void useAppContext() throws Exception {
+        // Context of the app under test.
+        Context appContext = InstrumentationRegistry.getTargetContext();
+
+        Assert.assertEquals("com.example.inspired.inspiredvideo", appContext.getPackageName());
     }
 }

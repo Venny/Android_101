@@ -1,6 +1,9 @@
 package com.example.inspired.inspiredvideo.view.activities;
 
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +15,7 @@ import android.view.MenuInflater;
 import com.example.inspired.inspiredvideo.R;
 import com.example.inspired.inspiredvideo.data.sqlite.DatabaseHelper;
 import com.example.inspired.inspiredvideo.model.Movie2;
+import com.example.inspired.inspiredvideo.view.adapter.ViewPagerAdapter;
 import com.example.inspired.inspiredvideo.view.fragments.MoviesListFragment;
 
 import java.util.ArrayList;
@@ -22,6 +26,9 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
 
     private List<Movie2> movies = new ArrayList<Movie2>();
     private DatabaseHelper moviesDB;
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
+    private ViewPagerAdapter viewPagerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +37,28 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
         // Set a toolbar to replace the action bar.
         Toolbar toolbar = (Toolbar) findViewById(R.id.inspired_toolbar);
         setSupportActionBar(toolbar);
+
+        tabLayout = (TabLayout) findViewById(R.id.tabs);
+        viewPager = (ViewPager) findViewById(R.id.viewpager);
+
+        // Tabs.
+        final TabLayout.Tab all = tabLayout.newTab();
+        final TabLayout.Tab comedy = tabLayout.newTab();
+        final TabLayout.Tab drama = tabLayout.newTab();
+
+        all.setText("All");
+        comedy.setText("Comedy");
+        drama.setText("Drama");
+
+        tabLayout.addTab(all, 0);
+        tabLayout.addTab(comedy, 1);
+        tabLayout.addTab(drama, 2);
+
+        tabLayout.setTabTextColors(ContextCompat.getColorStateList(this, R.color.tab_selector));
+        tabLayout.setSelectedTabIndicatorColor(ContextCompat.getColor(this, R.color.indicator));
+
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+
 
         if(findViewById(R.id.fragment_container) != null){
             // However, if we're being restored from a previous state,
@@ -40,21 +69,6 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
             }
         }
 
-        // DB helper
-        // moviesDB = new DatabaseHelper(this);
-        // ArrayList array_list = DatabaseHelper;
-        // ArrayAdapter arrayAdapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1, array_list);
-
-
-        int img1 = R.drawable.lady;
-        int img2 = R.drawable.biliard;
-       /* Context.mData.add(new Movie("Ghostbusters", "Following a ghost invasion of Manhattan, paranormal enthusiasts Erin Gilbert and Abby Yates, nuclear engineer Jillian...", img1, 2, Context.mData.size()));
-        Context.mData.add(new Movie("Star Trek Beyond", "The USS Enterprise crew explores the furthest reaches of uncharted space, where they ...", img2, 2, Context.mData.size()));
-        Context.mData.add(new Movie("The Legend of Tarzan", "Tarzan, having acclimated to life in London, is called back to his former home in the jungle to ...", img1, 3, Context.mData.size()));
-        Context.mData.add(new Movie("The Secret Life of Pets", "sfdgrdg", img2, 1, Context.mData.size()));
-        Context.mData.add(new Movie("Me Before You", "A girl in a small town forms an unlikely bond with a recently-paralyzed man she's taking care of.\n", img1, 3, Context.mData.size()));
-        Context.mCurrentData.addAll(Context.mData);*/
-
         // Creating dynamically the fragment.
         MoviesListFragment firstFragment = MoviesListFragment.newInstance("");
 
@@ -64,8 +78,10 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
         shouldDisplayHomeUp();
 
         getSupportFragmentManager().beginTransaction()
-                                   .add(R.id.fragment_container, firstFragment)
+                                   .add(R.id.viewpager, firstFragment)
                                    .commit();
+
+        // Drawer layout.
         DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(
                 this, /* host Activity */

@@ -99,13 +99,6 @@ public class MoviesListFragment extends Fragment  implements AdapterView.OnItemS
                 mMovieAdapter = new MovieAdapter(movies, new OnItemClickListener() {
                     @Override
                     public void onItemClick(View v, int position) {
-                        /*MovieItemDetailsFragment nextFrag= MovieItemDetailsFragment.newInstance(position);
-                        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-
-                        transaction.replace(R.id.fragment_container, nextFrag);
-                        transaction.addToBackStack(null);
-                        transaction.commit();*/
-
                         Intent myIntent = new Intent(getActivity(), MovieItemDetailsActivity.class);
                         Movie2 movieItem = movies.get(position);
                         myIntent.putExtra("item", movieItem);

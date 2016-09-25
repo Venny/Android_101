@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Simplified</string>
+    <string name="action_button_name">Ok</string>
+    <string name="checkbox_label">Save</string>
+</resources>

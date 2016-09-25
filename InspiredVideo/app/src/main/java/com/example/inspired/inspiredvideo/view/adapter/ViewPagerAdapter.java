@@ -4,6 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
+import com.example.inspired.inspiredvideo.R;
 import com.example.inspired.inspiredvideo.view.fragments.MoviesListFragment;
 
 /**
@@ -18,7 +19,9 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
     @Override
     public Fragment getItem(int position) {
         // MoviesListFragment is our TabFragment.
-        return MoviesListFragment.newInstance("");
+        MoviesListFragment moviesListFragment = MoviesListFragment.newInstance("");
+
+        return moviesListFragment;
     }
 
     @Override

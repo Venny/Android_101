@@ -1,7 +1,14 @@
 package com.example.inspired.inspiredvideo.view.activities;
 
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
+import android.support.v4.app.TaskStackBuilder;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -70,16 +77,16 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
         }
 
         // Creating dynamically the fragment.
-        MoviesListFragment firstFragment = MoviesListFragment.newInstance("");
+       // MoviesListFragment firstFragment = MoviesListFragment.newInstance("");
 
         // Listen for changes in the back stack.
-        getSupportFragmentManager().addOnBackStackChangedListener(this);
+        //getSupportFragmentManager().addOnBackStackChangedListener(this);
         // Handle whe activity is recreated like on orientation Change.
-        shouldDisplayHomeUp();
+        //shouldDisplayHomeUp();
 
-        getSupportFragmentManager().beginTransaction()
+        /*getSupportFragmentManager().beginTransaction()
                                    .add(R.id.viewpager, firstFragment)
-                                   .commit();
+                                   .commit();*/
 
         // Drawer layout.
         DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -111,5 +118,26 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
         // Enable Up button only if there are entries in the back stack
         boolean canBack = getSupportFragmentManager().getBackStackEntryCount() > 0;
         getSupportActionBar().setDisplayHomeAsUpEnabled(canBack);
+    }
+
+    @Override
+    protected void onPause(){
+        super.onPause();
+        NotificationCompat.Builder mBuilder =
+                new NotificationCompat.Builder(this)
+                .setSmallIcon(R.drawable.lady)
+                .setContentTitle("Simple notification")
+                .setContentText("Click me.");
+        Intent resultIntent = new Intent(this, MainActivity.class);
+
+        // Add stack builder. (helpful if we don't use the Main activity)
+        TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
+        stackBuilder.addParentStack(MainActivity.class);
+        PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
+        mBuilder.setContentIntent(resultPendingIntent);
+        NotificationManager mNotificationManager =
+                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        mNotificationManager.notify(0, mBuilder.build());
+
     }
 }

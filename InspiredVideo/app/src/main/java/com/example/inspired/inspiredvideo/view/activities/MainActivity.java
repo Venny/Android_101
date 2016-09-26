@@ -10,6 +10,7 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v4.app.TaskStackBuilder;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -47,6 +48,9 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
 
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         viewPager = (ViewPager) findViewById(R.id.viewpager);
+        final ViewPagerAdapter adapter = new ViewPagerAdapter
+                (getSupportFragmentManager(), tabLayout.getTabCount());
+
 
         // Tabs.
         final TabLayout.Tab all = tabLayout.newTab();
@@ -64,17 +68,38 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
         tabLayout.setTabTextColors(ContextCompat.getColorStateList(this, R.color.tab_selector));
         tabLayout.setSelectedTabIndicatorColor(ContextCompat.getColor(this, R.color.indicator));
 
+        viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                System.out.println(tab.getPosition());
+                        /*getSupportFragmentManager().beginTransaction()
+                                   .add(R.id.viewpager, firstFragment)
+                                   .commit();*/
+                viewPager.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
 
 
-        if(findViewById(R.id.fragment_container) != null){
+     /*   if(findViewById(R.id.fragment_container) != null){
             // However, if we're being restored from a previous state,
             // then we don't need to do anything and should return or else
             // we could end up with overlapping fragments.
             if(savedInstanceState != null){
                 return;
             }
-        }
+        }*/
 
         // Creating dynamically the fragment.
        // MoviesListFragment firstFragment = MoviesListFragment.newInstance("");
@@ -139,5 +164,14 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         mNotificationManager.notify(0, mBuilder.build());
 
+    }
+
+
+    private void setupViewPager(ViewPager viewPager) {
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager(), 3);
+        adapter.addFrag(new OneFragment(), "ONE");
+        adapter.addFrag(new TwoFragment(), "TWO");
+        adapter.addFrag(new ThreeFragment(), "THREE");
+        viewPager.setAdapter(adapter);
     }
 }

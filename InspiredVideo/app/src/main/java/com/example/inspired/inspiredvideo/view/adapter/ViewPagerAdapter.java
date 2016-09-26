@@ -12,20 +12,29 @@ import com.example.inspired.inspiredvideo.view.fragments.MoviesListFragment;
  */
 
 public class ViewPagerAdapter extends FragmentStatePagerAdapter {
-    public ViewPagerAdapter(FragmentManager fm) {
+    int mNumOfTabs;
+
+    public ViewPagerAdapter(FragmentManager fm, int numOfTabs) {
         super(fm);
+        this.mNumOfTabs = numOfTabs;
     }
 
     @Override
     public Fragment getItem(int position) {
+        System.out.println("New item");
         // MoviesListFragment is our TabFragment.
-        MoviesListFragment moviesListFragment = MoviesListFragment.newInstance("");
-
-        return moviesListFragment;
+        switch (position) {
+            case 0:
+            case 1:
+            case 2:
+                return MoviesListFragment.newInstance("");
+            default:
+                return null;
+        }
     }
 
     @Override
     public int getCount() {
-        return 3;
+        return mNumOfTabs;
     }
 }

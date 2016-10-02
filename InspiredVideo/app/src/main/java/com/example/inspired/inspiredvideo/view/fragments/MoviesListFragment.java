@@ -56,7 +56,6 @@ public class MoviesListFragment extends Fragment  implements AdapterView.OnItemS
     }
 
     public static MoviesListFragment newInstance(String param1) {
-        System.out.println("New instance");
         MoviesListFragment fragment = new MoviesListFragment();
         Bundle args = new Bundle();
 

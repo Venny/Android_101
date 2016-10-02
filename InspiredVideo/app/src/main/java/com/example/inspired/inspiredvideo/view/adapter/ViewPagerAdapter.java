@@ -7,30 +7,31 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import com.example.inspired.inspiredvideo.R;
 import com.example.inspired.inspiredvideo.view.fragments.MoviesListFragment;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by vdimitrova on 21.09.16.
  */
 
 public class ViewPagerAdapter extends FragmentStatePagerAdapter {
-    int mNumOfTabs;
+    private List<Fragment> mFragmentList = new ArrayList<>();
+    private List<String> mFragmentTitleList = new ArrayList<>();
+    private int mNumOfTabs;
 
-    public ViewPagerAdapter(FragmentManager fm, int numOfTabs) {
-        super(fm);
+    public ViewPagerAdapter(FragmentManager manager, int numOfTabs) {
+        super(manager);
         this.mNumOfTabs = numOfTabs;
     }
 
     @Override
     public Fragment getItem(int position) {
-        System.out.println("New item");
-        // MoviesListFragment is our TabFragment.
-        switch (position) {
-            case 0:
-            case 1:
-            case 2:
-                return MoviesListFragment.newInstance("");
-            default:
-                return null;
-        }
+        return mFragmentList.get(position);
+    }
+
+    public void addFrag(Fragment fragment, String title) {
+        mFragmentList.add(fragment);
+        mFragmentTitleList.add(title);
     }
 
     @Override

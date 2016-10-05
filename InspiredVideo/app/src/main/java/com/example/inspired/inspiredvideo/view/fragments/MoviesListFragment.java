@@ -67,6 +67,24 @@ public class MoviesListFragment extends Fragment  implements AdapterView.OnItemS
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Get the movie items via GET request
+        ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
+
+        Call<MoviesResponse> call = apiService.getMovies();
+        call.enqueue(new Callback<MoviesResponse>() {
+            @Override
+            public void onResponse(Call<MoviesResponse> call, Response<MoviesResponse> response) {
+                movies = (ArrayList<Movie2>) response.body().getResults();
+            }
+
+            @Override
+            public void onFailure(Call<MoviesResponse> call, Throwable t) {
+                // If request fails log the error.
+                Log.e(TAG, t.toString());
+            }
+        });
+
         setHasOptionsMenu(true);
     }
 
@@ -86,35 +104,18 @@ public class MoviesListFragment extends Fragment  implements AdapterView.OnItemS
         mLinearLayoutManager = new LinearLayoutManager(inflater.getContext());
         mRecyclerView.setLayoutManager(mLinearLayoutManager);
 
-        // Get the movie items via GET request
-        ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-
-        Call<MoviesResponse> call = apiService.getMovies();
-        call.enqueue(new Callback<MoviesResponse>() {
+        // @TODO Maybe this should be moved in ViewPagerAdapter. Check it.
+        // Specifying the Adapter.
+        mMovieAdapter = new MovieAdapter(movies, new OnItemClickListener() {
             @Override
-            public void onResponse(Call<MoviesResponse> call, Response<MoviesResponse> response) {
-                movies = (ArrayList<Movie2>) response.body().getResults();
-
-                // Specifying the Adapter.
-                mMovieAdapter = new MovieAdapter(movies, new OnItemClickListener() {
-                    @Override
-                    public void onItemClick(View v, int position) {
-                        Intent myIntent = new Intent(getActivity(), MovieItemDetailsActivity.class);
-                        Movie2 movieItem = movies.get(position);
-                        myIntent.putExtra("item", movieItem);
-                        getActivity().startActivity(myIntent);
-                    }
-                });
-
-                mRecyclerView.setAdapter(mMovieAdapter);
-            }
-
-            @Override
-            public void onFailure(Call<MoviesResponse> call, Throwable t) {
-                // If request fails log the error.
-                Log.e(TAG, t.toString());
+            public void onItemClick(View v, int position) {
+                Intent myIntent = new Intent(getActivity(), MovieItemDetailsActivity.class);
+                Movie2 movieItem = movies.get(position);
+                myIntent.putExtra("item", movieItem);
+                getActivity().startActivity(myIntent);
             }
         });
+        mRecyclerView.setAdapter(mMovieAdapter);
 
         return myLayoutView;
     }

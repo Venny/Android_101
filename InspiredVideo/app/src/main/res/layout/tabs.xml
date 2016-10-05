@@ -9,6 +9,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/android_tab"
         android:id="@+id/textView"
+        android:textColor="@color/colorPureWhite"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 </RelativeLayout>

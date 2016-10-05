@@ -52,8 +52,6 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
         final TabLayout.Tab all = tabLayout.newTab();
         final TabLayout.Tab comedy = tabLayout.newTab();
         final TabLayout.Tab drama = tabLayout.newTab();
-        setupViewPager(viewPager);
-        tabLayout.setupWithViewPager(viewPager);
 
         all.setText("All");
         comedy.setText("Comedy");
@@ -83,6 +81,9 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
 
             }
         });
+
+        setupViewPager(viewPager);
+        tabLayout.setupWithViewPager(viewPager);
 
         // Drawer layout.
         DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);

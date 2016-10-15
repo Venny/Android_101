@@ -1,16 +1,12 @@
 package com.example.inspired.inspiredvideo.view.fragments;
 
 import android.content.Intent;
-import android.graphics.Movie;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.MenuItemCompat;
-import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -29,12 +25,10 @@ import com.example.inspired.inspiredvideo.model.Movie2;
 import com.example.inspired.inspiredvideo.model.MoviesResponse;
 import com.example.inspired.inspiredvideo.rest.ApiClient;
 import com.example.inspired.inspiredvideo.rest.ApiInterface;
-import com.example.inspired.inspiredvideo.view.activities.MainActivity;
 import com.example.inspired.inspiredvideo.view.activities.MovieItemDetailsActivity;
 import com.example.inspired.inspiredvideo.view.adapter.MovieAdapter;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -51,27 +45,45 @@ public class MoviesListFragment extends Fragment  implements AdapterView.OnItemS
     private int currentGenre = 0;
     private ArrayList<Movie2> movies = new ArrayList<>();
 
+    private static final String ARG_MOVIE_TYPE = "movie type";
+
     public MoviesListFragment() {
         // Required empty public constructor
     }
 
-    public static MoviesListFragment newInstance(String param1) {
+    public static MoviesListFragment newInstance(String movieType) {
         MoviesListFragment fragment = new MoviesListFragment();
         Bundle args = new Bundle();
 
-        args.putString("someInt", param1);
+        args.putString(ARG_MOVIE_TYPE, movieType);
         fragment.setArguments(args);
         return fragment;
     }
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        String MoviesType = "";
+        if (getArguments() != null) {
+            MoviesType = getArguments().getString(ARG_MOVIE_TYPE);
+        }
 
         // Get the movie items via GET request
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
+        Call<MoviesResponse> call;
 
-        Call<MoviesResponse> call = apiService.getMovies();
+        switch (MoviesType){
+            case "comedy":
+                call = apiService.getMoviesComedy();
+            break;
+            case "drama":
+                call = apiService.getMoviesDrama();
+                break;
+            default:
+                call = apiService.getMoviesAll();
+        }
+
         call.enqueue(new Callback<MoviesResponse>() {
             @Override
             public void onResponse(Call<MoviesResponse> call, Response<MoviesResponse> response) {
@@ -85,7 +97,7 @@ public class MoviesListFragment extends Fragment  implements AdapterView.OnItemS
             }
         });
 
-        setHasOptionsMenu(true);
+            setHasOptionsMenu(true);
     }
 
     @Override
@@ -128,7 +140,9 @@ public class MoviesListFragment extends Fragment  implements AdapterView.OnItemS
         mGridLayoutManager = new GridLayoutManager(mRecyclerView.getContext(), 2);
 
         // Add a dropdown menu to the Spinner.
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this.getContext(), R.array.toolbar_spinner_items_array, R.layout.toolbar_spinner_item);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this.getContext(),
+                R.array.toolbar_spinner_items_array,
+                R.layout.toolbar_spinner_item);
         adapter.setDropDownViewResource(R.layout.toolbar_spinner_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);

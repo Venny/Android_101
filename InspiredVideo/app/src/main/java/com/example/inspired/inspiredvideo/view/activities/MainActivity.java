@@ -141,9 +141,9 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
 
     private void setupViewPager(ViewPager viewPager) {
         viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), 3);
-        viewPagerAdapter.addFrag(MoviesListFragment.newInstance(""), "ONE");
-        viewPagerAdapter.addFrag(MoviesListFragment.newInstance(""), "TWO");
-        viewPagerAdapter.addFrag(MoviesListFragment.newInstance(""), "THREE");
+        viewPagerAdapter.addFrag(MoviesListFragment.newInstance("drama"), "drama");
+        viewPagerAdapter.addFrag(MoviesListFragment.newInstance("comedy"), "comedy");
+        viewPagerAdapter.addFrag(MoviesListFragment.newInstance(""), "all");
         viewPager.setAdapter(viewPagerAdapter);
         getSupportFragmentManager().addOnBackStackChangedListener(this);
     }
